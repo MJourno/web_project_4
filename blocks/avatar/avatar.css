@@ -1,0 +1,14 @@
+.avatar {
+  background: url(../../images/profile\ avatar.png);
+  background-size: cover;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  left: 0px;
+  margin-right: 30px;
+}
+@media screen and (max-width:768px) {
+  .avatar {
+   margin: 0px;
+  }
+}

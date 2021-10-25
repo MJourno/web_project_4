@@ -1,0 +1,27 @@
+.popup__form {
+  width: 430px;
+  height: 330px;
+  background-color: #ffffff;
+  position:relative;
+  top: 0px;
+  margin-top: 195px;
+  left: 50%;
+  transform: translate(-50%);
+  flex-direction: column;
+  border-radius: 10px;
+  display:none;
+  visibility: hidden;
+  z-index: 2;
+ }
+
+ .popup__form__is-open {
+  display: flex;
+  visibility:inherit;
+ }
+ @media screen and (max-width:768px) {
+  .popup__form {
+    width: 282px;
+    height: 322px;
+    margin-top: 123px;
+   }
+ }
