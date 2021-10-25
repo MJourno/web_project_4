@@ -20,11 +20,13 @@ function closeForm() {
   form.classList.remove('popup__form__is-open');
 }
 
-const like = document.querySelector('.element__like-button');
-
-like.addEventListener('click', () => {
-  like.classList.toggle('active');
+const like = document.querySelectorAll('.element__like-button').forEach(like  => {
+  like.addEventListener('click', () => {
+    like.classList.toggle('active');
+  });
 });
+
+
 
 // Let's find the form in the DOM
 let formElement = document.querySelector('.popup')
