@@ -14,7 +14,7 @@
   z-index: 2;
  }
 
- .popup__form__is-open {
+ .popup__form_is-open {
   display: flex;
   visibility:inherit;
  }

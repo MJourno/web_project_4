@@ -13,11 +13,11 @@ formButtonEdit.addEventListener('click', () => {
 formButtonClose.addEventListener('click', closeForm);
 
 function openForm() {
-  form.classList.add('popup__form__is-open');
+  form.classList.add('popup__form_is-open');
 }
 
 function closeForm() {
-  form.classList.remove('popup__form__is-open');
+  form.classList.remove('popup__form_is-open');
 }
 
 const like = document.querySelectorAll('.element__like-button').forEach(like  => {
