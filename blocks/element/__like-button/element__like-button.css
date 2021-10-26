@@ -1,5 +1,5 @@
 .element__like-button {
-  background-image: url(../../../images/hart.png);
+  background-image: url(../../../images/like.svg);
   height: 19px;
   width: 21px;
   background-color: transparent;
@@ -12,6 +12,6 @@
 }
 
 .active {
-  background-image: url(../../../images/Union.png);
+  background-image: url(../../../images/active.svg);
 }
 

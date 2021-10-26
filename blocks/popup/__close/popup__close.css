@@ -1,5 +1,5 @@
 .popup__close {
-  background-image: url(../../../images/Close_Icon.png);
+  background-image: url(../../../images/Close\ Icon.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
@@ -8,8 +8,8 @@
   border: none;
   outline: none;
   position:absolute;
-  align-self: flex-end;
-  transform: translate(40px, -40px);
+  top: 260px;
+  right: -40px;
   padding: 0px;
 }
 @media screen and (max-width:768px) {
