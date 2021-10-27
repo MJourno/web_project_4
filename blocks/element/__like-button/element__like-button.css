@@ -10,8 +10,9 @@
   background-size: contain;
   border: none;
 }
-
-.active {
-  background-image: url(../../../images/active.svg);
+.element__like-button:hover {
+  opacity: 0.5;
 }
+
+
 

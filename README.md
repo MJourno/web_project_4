@@ -1,16 +1,18 @@
 # Project 4: Around The U.S.
 
+an interactive page where users can add, remove, or like photos.
+
 ### Overview
 
-* Figma
-* Images
+ technologies and techniques used:
+ JavaScript
+ css
+ html
+ BEM Methodology
 
 **Figma**
 
 * [Link to the project in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
 
-**Images**
-
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-
-Have fun with JavaScript!
+**GitHub Pages**
+https://github.com/MJourno/web_project_4.git

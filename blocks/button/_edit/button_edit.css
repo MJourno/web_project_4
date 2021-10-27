@@ -9,7 +9,11 @@
   border: 1px solid #FFFFFF;
   background-color: transparent;
 }
-@media screen and (max-width:768px) {
+.button_edit:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width:879px) {
   .button_edit {
     height: 18px;
     width: 18px;

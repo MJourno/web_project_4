@@ -13,16 +13,16 @@ formButtonEdit.addEventListener('click', () => {
 formButtonClose.addEventListener('click', closeForm);
 
 function openForm() {
-  form.classList.add('popup__form_is-open');
+  form.classList.add('popup_is-open');
 }
 
 function closeForm() {
-  form.classList.remove('popup__form_is-open');
+  form.classList.remove('popup_is-open');
 }
 
 const like = document.querySelectorAll('.element__like-button').forEach(like  => {
   like.addEventListener('click', () => {
-    like.classList.toggle('active');
+    like.classList.toggle('element__like-button_active');
   });
 });
 

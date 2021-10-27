@@ -1,0 +1,4 @@
+.popup_is-open {
+  display: flex;
+  visibility:inherit;
+ }
