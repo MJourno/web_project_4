@@ -8,11 +8,12 @@ const inputDescription = document.querySelector('.popup__input_type_description'
 const popup = document.querySelector('.popup');
 const form = document.querySelector('.popup__container');
 
-saveButton.addEventListener('click', handleProfileFormSubmit);
-
-function handleProfileFormSubmit() {
-  form.classList.remove('popup_is-open');
-}
+saveButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  formUser.textContent = inputUser.value;
+  formDescription.textContent = inputDescription.value;
+  closeForm();
+});
 
 formButtonEdit.addEventListener('click', openForm);
 
