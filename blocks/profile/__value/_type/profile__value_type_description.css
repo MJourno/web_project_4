@@ -2,8 +2,12 @@
   line-height: 22px;
   font-size: 18px;
   margin-top: 16px;
-  width: 415px;
+  max-width: 373px;
   height: 22px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
 }
 @media screen and (max-width:879px){
   .profile__value_type_description {

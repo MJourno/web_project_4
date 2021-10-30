@@ -9,9 +9,7 @@
   color: #000000;
   margin: 54px 36px 0px;
   padding-bottom: 13.26px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+
 }
 .popup__input:last-of-type {
   margin: 29.74px 36px 0px;
