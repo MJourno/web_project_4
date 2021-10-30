@@ -1,4 +1,4 @@
-.profile__value_type_Description {
+.profile__value_type_description {
   line-height: 22px;
   font-size: 18px;
   margin-top: 16px;
@@ -14,7 +14,7 @@
     line-height: 17px;
     font-size: 14px;
     margin-top:14px;
-    width: 282px;
+    max-width: 196px;
     height: 14px;
     text-align: center;
   }
