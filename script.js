@@ -21,13 +21,13 @@ formButtonClose.addEventListener('click', closeForm);
 
 function openForm() {
   popup.classList.add('popup_is-open');
-  fillInputs ();
+  fillInputs();
 }
 
-function fillInputs () {
+function fillInputs() {
   inputUser.value = formUser.textContent;
   inputDescription.value = formDescription.textContent;
-  }
+}
 
 function closeForm() {
   popup.classList.remove('popup_is-open');
