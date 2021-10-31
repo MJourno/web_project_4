@@ -2,11 +2,11 @@
   line-height: 22px;
   font-size: 18px;
   margin-top: 16px;
-  max-width: 373px;
-  height: 22px;
+  width: 373px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+
 
 }
 @media screen and (max-width:879px){
@@ -15,7 +15,6 @@
     font-size: 14px;
     margin-top:14px;
     max-width: 196px;
-    height: 14px;
     text-align: center;
   }
 }
