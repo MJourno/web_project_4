@@ -25,59 +25,16 @@
         <button aria-label="add" type="button" class="button profile__add-button"></button>
       </section>
       <section>
-        <ul class="elements">
-          <li class="element">
-            <img class="element__img" src="./images/yosemite_valley.jpg" alt="Yosemite Valley">
-            <div class="element__info">
-              <h2 class="element__title">Yosemite Valley</h2>
-              <button aria-label="like" type="button" class="button  element__like-button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__img" src="./images/lake_louise.jpg" alt="Lake Louise">
-            <div class="element__info">
-              <h2 class="element__title">Lake Louise</h2>
-              <button aria-label="like" type="button" class="button  element__like-button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__img" src="./images/bald_mountains.jpg" alt="Bald Mountains">
-            <div class="element__info">
-              <h2 class="element__title">Bald Mountains</h2>
-              <button aria-label="like" type="button" class="button element__like-button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__img" src="./images/latemar.jpg" alt="Latemar">
-            <div class="element__info">
-              <h2 class="element__title">Latemar</h2>
-              <button aria-label="like" type="button" class="button element__like-button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__img" src="./images/vanoise_nationa.jpg" alt="Vanoise National Park">
-            <div class="element__info">
-              <h2 class="element__title">Vanoise National Park</h2>
-              <button aria-label="like" type="button" class="button element__like-button"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__img" src="./images/lago_di_braies.jpg" alt="Lago di Braies">
-            <div class="element__info">
-              <h2 class="element__title">Lago di Braies</h2>
-              <button aria-label="like" type="button" class="button element__like-button"></button>
-            </div>
-          </li>
-        </ul>
+        <ul class="elements"></ul>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2021 Around The U.S.</p>
     </footer>
-    <div class="popup">
-      <div class="popup__container">
-        <button aria-label="Close" type="button" class="button popup__close"></button>
-        <form name="edit-form" class="popup__form">
+    <div class="popup popup_type_edit">
+      <div class="popup__container popup__container-edit">
+        <button aria-label="Close" type="button" class="button popup__close popup__close-edit"></button>
+        <form name="edit-form" class="popup__form popup__form_type_edit">
           <h2 class="popup__title">Edit profile</h2>
           <input class="popup__input popup__input_type_name" type="text" placeholder="Name">
           <input class="popup__input popup__input_type_description" type="text" placeholder="About me">
@@ -85,9 +42,36 @@
         </form>
       </div>
     </div>
+    <div class="popup popup_type_add-card">
+      <div class="popup__container popup__container-add">
+        <button aria-label="Close" type="button" class="button popup__close popup__close-add"></button>
+        <form name="new place" class="popup__form popup__form_type_add-place">
+          <h2 class="popup__title">New place</h2>
+          <input class="popup__input popup__input_type_title" type="text" placeholder="Title">
+          <input class="popup__input popup__input_type_link" type="text" placeholder="Image link">
+          <button aria-label="Create" type="submit" class="button popup__save">Create</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_img">
+      <div class="popup__container popup__container-img">
+        <button aria-label="Close" type="button" class="button popup__close popup__close-img"></button>
+        <div class="popup__img"></div>`
+      </div>
+    </div>
   </div>
-  <script src="./script.js">
-  </script>
+
+  <script src="./script.js" defer></script>
+  <template id="element-template">
+    <li class="element card">
+      <button class="button element__delete"></button>
+      <div class="element__img"></div>
+      <div class="element__info">
+        <h2 class="element__title"></h2>
+        <button aria-label="like" type="button" class="button element__like-button"></button>
+      </div>
+    </li>
+  </template>
 </body>
 
 </html>
