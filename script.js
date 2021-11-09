@@ -43,8 +43,8 @@ const cardsElementTemplate = document.querySelector('#element-template').content
 const inputUser = document.querySelector('.popup__input_type_name');
 const inputDescription = document.querySelector('.popup__input_type_description');
 
-const popupAddInputTitle = document.querySelector('.popup__input_type_title').value;
-const popupAddInputlink = document.querySelector('.popup__input_type_link').value;
+const popupAddInputTitle = document.querySelector('.popup__input_type_title');
+const popupAddInputlink = document.querySelector('.popup__input_type_link');
 
 const elementTitle = document.querySelector('#element-template').content.querySelector('.element__title');
 const elementImg =document.querySelector('#element-template').content.querySelector('.element__img');
@@ -58,19 +58,19 @@ function creatCardElement(cardData) {
   likeButton.addEventListener('click', () => {
     likeButton.classList.toggle('element__like-button_active')
   });
-
-    popupAddACard.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      initialCards.push({elementTitle,elementImg});
-      creatCardElement(initialCards);
-      closeForm(popupAddACard);
-      const card = creatCardElement(cardData);
-      elements.prepend(card);
-    });
-
-
   return card;
 }
+popupAddACard.addEventListener('submit', (evt) => {
+
+  evt.preventDefault();
+  closeForm(popupAddACard);
+  const cardData = {
+    name:popupAddInputTitle.value,
+    link:popupAddInputlink.value
+  };
+  const card = creatCardElement(cardData);
+  elements.prepend(card);
+});
 
 function openForm(popupEdit) {
   popupEdit.classList.add('popup_is-open');
