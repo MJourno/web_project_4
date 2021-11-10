@@ -25,6 +25,8 @@ const initialCards = [
   }
 
 ];
+
+
 //wrappers
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupFormEdit = document.querySelector('.popup__form_type_edit');
@@ -61,7 +63,6 @@ function creatCardElement(cardData) {
   return card;
 }
 popupAddACard.addEventListener('submit', (evt) => {
-
   evt.preventDefault();
   closeForm(popupAddACard);
   const cardData = {
@@ -70,6 +71,30 @@ popupAddACard.addEventListener('submit', (evt) => {
   };
   const card = creatCardElement(cardData);
   elements.prepend(card);
+});
+const deleteButton = cardsElementTemplate.querySelector('.element__delete');
+const elementTemplate = document.querySelector('#element-template');
+
+var script = document.createElement('script');
+script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
+script.type = 'text/javascript';
+document.getElementsByTagName('head')[0].appendChild(script);
+
+var checkReady = function(callback) {
+  if (window.jQuery) {
+      callback(jQuery);
+  }
+  else {
+      window.setTimeout(function() { checkReady(callback); }, 20);
+  }
+};
+
+checkReady(function($) {
+  $(function(){
+    $('.element__delete').click(function() {
+      $(this).closest('.element').remove()
+    });
+  });
 });
 
 function openForm(popupEdit) {
