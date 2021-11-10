@@ -26,7 +26,6 @@ const initialCards = [
 
 ];
 
-
 //wrappers
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupFormEdit = document.querySelector('.popup__form_type_edit');
@@ -72,8 +71,15 @@ popupAddACard.addEventListener('submit', (evt) => {
   const card = creatCardElement(cardData);
   elements.prepend(card);
 });
-const deleteButton = cardsElementTemplate.querySelector('.element__delete');
+
 const elementTemplate = document.querySelector('#element-template');
+
+const deleteButton = document.querySelector('#element-template').content.querySelector('.element__delete');
+
+/*deleteButton.addEventListener("click", () => {
+  const listItem = deleteButton.closest(".card");
+  listItem.remove();
+});
 
 var script = document.createElement('script');
 script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
@@ -95,7 +101,19 @@ checkReady(function($) {
       $(this).closest('.element').remove()
     });
   });
+});*/
+
+deleteButton.addEventListener('click', event => {
+  if (event.target.className === 'element__delete') {
+    const listItem = deleteButton.closest('.element');
+  listItem.remove();
+  }
 });
+
+/*deleteButton.addEventListener('click', () => {
+  const listItem = deleteButton.closest('.element');
+  listItem.remove();
+});*/
 
 function openForm(popupEdit) {
   popupEdit.classList.add('popup_is-open');
@@ -119,17 +137,6 @@ popupFormEdit.addEventListener('submit', (evt) => {
   formDescription.textContent = inputDescription.value;
   closeForm(popupEdit);
 });
-
-/*popupAddACard.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  /*elementTitle.textContent = popupAddInputTitle.value;
-  elementImg.textContent = popupAddInputlink.value;
-  closeForm(popupAddACard);
-  initialCards.push(popupAddInputTitle.value);
-  popupAddInputTitle.value = cardData.name;
-  creatCardElement();
-
-});*/
 
 formButtonEdit.addEventListener('click', () => {
   fillInputs();
