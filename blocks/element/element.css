@@ -4,3 +4,7 @@
   border-radius: 10px;
   position: relative;
 }
+
+.element:hover {
+  cursor: pointer;
+}

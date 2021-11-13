@@ -35,3 +35,5 @@
 @import url(../blocks/profile/__value/_type/profile__value_type_description.css);
 @import url(../blocks/profile/__value/_type/profile__value_type_name.css);
 @import url(../blocks/element/__delete/element__delete.css);
+@import url(../blocks/popup/__img/popup__img.css);
+@import url(../blocks/popup/__caption/popup__caption.css);

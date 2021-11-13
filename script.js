@@ -59,8 +59,22 @@ function creatCardElement(cardData) {
   likeButton.addEventListener('click', () => {
     likeButton.classList.toggle('element__like-button_active')
   });
+
+  card.querySelector('.element__delete').addEventListener('click', (event) => {
+    const listItem = event.target.closest('.element');
+    listItem.remove();
+  });
+
+  const popupOpenImg = document.querySelector('.popup_type_img');
+  card.querySelector('.element__img').addEventListener('click', (event) => {
+    document.querySelector('.popup__img').src = cardData.link;
+    document.querySelector('.popup__caption').textContent = cardData.name;
+    openForm(popupOpenImg);
+  });
+
   return card;
 }
+
 popupAddACard.addEventListener('submit', (evt) => {
   evt.preventDefault();
   closeForm(popupAddACard);
@@ -76,57 +90,18 @@ const elementTemplate = document.querySelector('#element-template');
 
 const deleteButton = document.querySelector('#element-template').content.querySelector('.element__delete');
 
-/*deleteButton.addEventListener("click", () => {
-  const listItem = deleteButton.closest(".card");
-  listItem.remove();
-});
-
-var script = document.createElement('script');
-script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
-script.type = 'text/javascript';
-document.getElementsByTagName('head')[0].appendChild(script);
-
-var checkReady = function(callback) {
-  if (window.jQuery) {
-      callback(jQuery);
-  }
-  else {
-      window.setTimeout(function() { checkReady(callback); }, 20);
-  }
-};
-
-checkReady(function($) {
-  $(function(){
-    $('.element__delete').click(function() {
-      $(this).closest('.element').remove()
-    });
-  });
-});*/
-
-deleteButton.addEventListener('click', event => {
-  if (event.target.className === 'element__delete') {
-    const listItem = deleteButton.closest('.element');
-  listItem.remove();
-  }
-});
-
-/*deleteButton.addEventListener('click', () => {
-  const listItem = deleteButton.closest('.element');
-  listItem.remove();
-});*/
-
 function openForm(popupEdit) {
   popupEdit.classList.add('popup_is-open');
   fillInputs(popupEdit);
-}
+};
 function openForm(popupAddACard) {
   popupAddACard.classList.add('popup_is-open');
-}
+};
 
 function fillInputs() {
   inputUser.value = formUser.textContent;
   inputDescription.value = formDescription.textContent;
-}
+};
 
 function closeForm(popupEdit) {
   popupEdit.classList.remove('popup_is-open')
