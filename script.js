@@ -30,15 +30,21 @@ const initialCards = [
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupFormEdit = document.querySelector('.popup__form_type_edit');
 const popupAddACard = document.querySelector('.popup_type_add-card');
+
 const elements = document.querySelector('.elements');
+const elementTemplate = document.querySelector('#element-template');
 
 //buttonsand other DOM
+const allCloseButtons = document.querySelectorAll('.popup__close');
+
 const formButtonEdit = document.querySelector('.profile__edit');
 const ProfileButtonAdd = document.querySelector('.profile__add-button');
 const saveButton = document.querySelector('.popup__save');
 const formUser = document.querySelector('.profile__value_type_name');
 const formDescription = document.querySelector('.profile__value_type_description');
+
 const cardsElementTemplate = document.querySelector('#element-template').content.querySelector('.element');
+const deleteButton = document.querySelector('#element-template').content.querySelector('.element__delete');
 
 //form data
 const inputUser = document.querySelector('.popup__input_type_name');
@@ -86,10 +92,6 @@ popupAddACard.addEventListener('submit', (evt) => {
   elements.prepend(card);
 });
 
-const elementTemplate = document.querySelector('#element-template');
-
-const deleteButton = document.querySelector('#element-template').content.querySelector('.element__delete');
-
 function openForm(popupEdit) {
   popupEdit.classList.add('popup_is-open');
   fillInputs(popupEdit);
@@ -106,6 +108,7 @@ function fillInputs() {
 function closeForm(popupEdit) {
   popupEdit.classList.remove('popup_is-open')
 };
+
 popupFormEdit.addEventListener('submit', (evt) => {
   evt.preventDefault();
   formUser.textContent = inputUser.value;
@@ -120,7 +123,6 @@ formButtonEdit.addEventListener('click', () => {
 
 ProfileButtonAdd.addEventListener('click', () => openForm(popupAddACard));
 
-const allCloseButtons = document.querySelectorAll('.popup__close');
 allCloseButtons.forEach(btn => btn.addEventListener('click', () => {
   const allPopups = document.querySelectorAll('.popup');
   allPopups.forEach(popup => popup.classList.remove('popup_is-open'))
