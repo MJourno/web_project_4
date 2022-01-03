@@ -80,4 +80,6 @@ function checkInitialFormValidity(formElement, settings) {
   toggleButtonState(inputElements, buttonElement, settings);
 }
 
+document.getElementById('input_type_name-error').innerHTML = 'Please fill out this field.';
+
 enableValidation(pageSettings);
