@@ -34,10 +34,12 @@
     <div class="popup popup_type_edit">
       <div class="popup__container popup__container-edit">
         <button aria-label="Close" type="button" class="button popup__close popup__close-edit"></button>
-        <form name="edit-form" class="popup__form popup__form_type_edit">
+        <form name="edit-form" class="popup__form popup__form_type_edit" novalidate>
           <h2 class="popup__title">Edit profile</h2>
-          <input class="popup__input popup__input_type_name" type="text" placeholder="Name">
-          <input class="popup__input popup__input_type_description" type="text" placeholder="About me">
+          <input id='input_type_name' class="popup__input popup__input_type_name" type="text" placeholder="Name" required  minlength="2" maxlength="40">
+          <span id = 'input_type_name-error' class="popup__error"></span>
+          <input id='input_type_description' class="popup__input popup__input_type_description" type="text" placeholder="About me" required minlength="2" maxlength="200">
+          <span id = 'input_type_description-error' class="popup__error"></span>
           <button aria-label="save" type="submit" class="button popup__save">Save</button>
         </form>
       </div>
@@ -45,10 +47,12 @@
     <div class="popup popup_type_add-card">
       <div class="popup__container popup__container-add">
         <button aria-label="Close" type="button" class="button popup__close popup__close-add"></button>
-        <form name="new place" class="popup__form popup__form_type_add-place">
+        <form name="new place" class="popup__form popup__form_type_add-place" novalidate>
           <h2 class="popup__title">New place</h2>
-          <input class="popup__input popup__input_type_title" type="text" placeholder="Title">
-          <input class="popup__input popup__input_type_link" type="text" placeholder="Image link">
+          <input id='input_type_title' class="popup__input popup__input_type_title" type="text" placeholder="Title"  required minlength="1" maxlength="30">
+          <span id="input_type_title-error" class="popup__error"></span>
+          <input id='input_type_link' class="popup__input popup__input_type_link" type="url" placeholder="Image link" required>
+          <span id="input_type_link-error" class="popup__error"></span>
           <button aria-label="Create" type="submit" class="button popup__save">Create</button>
         </form>
       </div>
@@ -61,8 +65,9 @@
       </div>
     </div>
   </div>
+  <script src="./scripts/validate.js" defer></script>
+  <script src="./scripts/script.js" defer></script>
 
-  <script src="./script.js" defer></script>
   <template id="element-template">
     <li class="element card">
       <button class="button element__delete"></button>

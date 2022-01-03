@@ -9,13 +9,11 @@
   color: #000000;
   margin: 54px 36px 0px;
   padding-bottom: 13.26px;
-
 }
 .popup__input:last-of-type {
   margin: 29.74px 36px 0px;
   padding-bottom: 13.34px;
 }
-
 @media screen and (max-width:768px) {
   .popup__input {
     width: 238px;

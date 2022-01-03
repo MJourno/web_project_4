@@ -116,10 +116,14 @@ popupFormEdit.addEventListener('submit', (evt) => {
 
 formButtonEdit.addEventListener('click', () => {
   fillInputs();
+  checkInitialFormValidity(popupEdit.querySelector('form'), pageSettings);
   openPopup(popupEdit);
 });
 
-profileButtonAdd.addEventListener('click', () => openPopup(popupAddACard));
+profileButtonAdd.addEventListener('click', () => {
+  checkInitialFormValidity(popupAddACard.querySelector('form'), pageSettings);
+   openPopup(popupAddACard);
+  });
 
 allCloseButtons.forEach(btn => btn.addEventListener('click', (evt) => {
   const openedPopup = evt.target.closest('.popup_is-open')
