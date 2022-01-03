@@ -133,3 +133,22 @@ allCloseButtons.forEach(btn => btn.addEventListener('click', (evt) => {
 initialCards.forEach(initialCardData => {
   elements.prepend(creatCardElement(initialCardData));
 });
+
+document.addEventListener('keydown', function(event) {
+  const key = event.key;
+  if (key === "Escape") {
+      closePopup(popupEdit);
+      closePopup(popupAddACard);
+      closePopup(popupOpenImg);
+  }
+});
+
+document.addEventListener('click', function(event) {
+    if (
+      event.target.matches('.popup')
+    ) {
+      closePopup(popupEdit);
+      closePopup(popupAddACard);
+      closePopup(popupOpenImg);
+    }
+  });
