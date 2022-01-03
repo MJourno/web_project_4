@@ -3,7 +3,7 @@
   display: block;
   width: 358px;
   margin: 5px 36px 0px;
-  text-align: left;
+  text-align: right;
 }
 @media screen and (max-width:768px) {
   .popup__error_visible {
