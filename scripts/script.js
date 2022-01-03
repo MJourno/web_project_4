@@ -45,7 +45,6 @@ const formUser = document.querySelector('.profile__value_type_name');
 const formDescription = document.querySelector('.profile__value_type_description');
 
 const cardsElementTemplate = document.querySelector('#element-template').content.querySelector('.element');
-const deleteButton = document.querySelector('#element-template').content.querySelector('.element__delete');
 
 //form data
 const inputUser = document.querySelector('.popup__input_type_name');
@@ -54,8 +53,6 @@ const inputDescription = document.querySelector('.popup__input_type_description'
 const popupAddInputTitle = document.querySelector('.popup__input_type_title');
 const popupAddInputlink = document.querySelector('.popup__input_type_link');
 
-const elementTitle = document.querySelector('#element-template').content.querySelector('.element__title');
-const elementImg =document.querySelector('#element-template').content.querySelector('.element__img');
 const popupOpenImg = document.querySelector('.popup_type_img');
 const cardImage = document.querySelector('.element__img');
 const popupImg = document.querySelector('.popup__img');
@@ -64,7 +61,8 @@ const popupCaption = document.querySelector('.popup__caption');
 function creatCardElement(cardData) {
   const card = cardsElementTemplate.cloneNode(true);
   card.querySelector('.element__title').textContent = cardData.name;
-  card.querySelector('.element__img').style.backgroundImage = `url(${cardData.link})`;
+  const cardImage = card.querySelector('.element__img')
+  cardImage.style.backgroundImage = `url(${cardData.link})`;
 
   const likeButton = card.querySelector('.element__like-button');
   likeButton.addEventListener('click', () => {
@@ -76,7 +74,7 @@ function creatCardElement(cardData) {
     listItem.remove();
   });
 
-  card.querySelector('.element__img').addEventListener('click', (event) => {
+  cardImage.addEventListener('click', (event) => {
     popupImg.src = cardData.link;
     popupImg.alt = cardData.name;
     popupCaption.textContent = cardData.name;
@@ -107,8 +105,7 @@ function closeByEscape(evt) {
 
 function closeByClick(evt) {
   if (evt.target.matches('.popup')) {
-    const openedPopup = document.querySelector('.popup_is-open')
-    closePopup(openedPopup)
+    closePopup(evt.target)
   }
 }
 
