@@ -1,3 +1,4 @@
+import "./validate.js";
 const initialCards = [
   {
     name: "Yosemite Valley",
