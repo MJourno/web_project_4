@@ -1,4 +1,5 @@
 import "./validate.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -44,7 +45,7 @@ const profileButtonAdd = document.querySelector('.profile__add-button');
 const saveButton = document.querySelector('.popup__save');
 const formUser = document.querySelector('.profile__value_type_name');
 const formDescription = document.querySelector('.profile__value_type_description');
-
+//template
 const cardsElementTemplate = document.querySelector('#element-template').content.querySelector('.element');
 
 //form data
@@ -152,4 +153,20 @@ allCloseButtons.forEach(btn => btn.addEventListener('click', (evt) => {
 
 initialCards.forEach(initialCardData => {
   elements.prepend(creatCardElement(initialCardData));
+});
+
+const formSelector = '.popup__form';
+const formSettings = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save",
+  inactiveButtonClass: "popup__save_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible"
+}
+
+const forms = document.querySelectorAll(settings.formSelector);
+forms.forEach(formElement => {
+  const FormValidator = new FormValidator(formSettings, formElement);
+
+  FormValidator.enableValidation();
 });
