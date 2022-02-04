@@ -34,7 +34,7 @@ export default class Card {
       popupImg.src = cardData.link;
       popupImg.alt = cardData.name;
       popupCaption.textContent = cardData.name;
-      openPopup(popupOpenImg);
+      this.openPopup(popupOpenImg);
     });
   }
 

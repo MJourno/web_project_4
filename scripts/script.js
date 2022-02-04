@@ -1,4 +1,10 @@
-import "./validate.js";
+import "./FormValidator.js";
+import "./card.js";
+import "./utils.js";
+import {checkInputValidity} from "./validate.js";
+import {checkInitialFormValidity} from "./validate.js";
+import {pageSettings} from "./validate.js"
+
 
 const initialCards = [
   {
@@ -164,7 +170,7 @@ const formSettings = {
   errorClass: "popup__error_visible"
 }
 
-const forms = document.querySelectorAll(settings.formSelector);
+const forms = document.querySelectorAll(formSettings.formSelector);
 forms.forEach(formElement => {
   const FormValidator = new FormValidator(formSettings, formElement);
 

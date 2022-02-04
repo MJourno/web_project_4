@@ -1,4 +1,3 @@
-
 /*//validate
 const formSelector = document.querySelector(".popup__form");
 const inputSelector = document.querySelector(".popup__input");
@@ -76,7 +75,7 @@ function enableValidation(settings) {
   })
 }
 
-function checkInitialFormValidity(formElement, settings) {
+  function checkInitialFormValidity(formElement, settings) {
   const inputElements = [...formElement.querySelectorAll(settings.inputSelector)];
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 
@@ -84,3 +83,6 @@ function checkInitialFormValidity(formElement, settings) {
 }
 
 enableValidation(pageSettings);
+export {checkInputValidity};
+export {checkInitialFormValidity};
+export {pageSettings};
