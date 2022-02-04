@@ -8,6 +8,12 @@ export default class FormValidator {
 
     this._formElement = formElement;
   }
+  /*_checkInitialFormValidity () {
+    const inputElements = [...formElement.querySelectorAll(this._inputSelector)];
+    const buttonElement = formElement.querySelector(this._submitButtonSelector);
+
+    this._toggleButtonState();
+  }*/
 
   _showInputError(inputElement, validationMessage) {
     const errorElement = this._formElement.querySelector(`#${this._inputElement.id}-error`);

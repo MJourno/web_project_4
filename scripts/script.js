@@ -1,9 +1,11 @@
 import "./FormValidator.js";
 import "./card.js";
 import "./utils.js";
-import {checkInputValidity} from "./validate.js";
-import {checkInitialFormValidity} from "./validate.js";
-import {pageSettings} from "./validate.js"
+import { checkInitialFormValidity } from "./validate.js";
+
+//import {checkInputValidity} from "./validate.js";
+//import {checkInitialFormValidity} from "./validate.js";
+//import {pageSettings} from "./validate.js"
 
 
 const initialCards = [
@@ -163,6 +165,14 @@ initialCards.forEach(initialCardData => {
 
 const formSelector = '.popup__form';
 const formSettings = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save",
+  inactiveButtonClass: "popup__save_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible"
+}
+const pageSettings = {
+  formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__save",
   inactiveButtonClass: "popup__save_disabled",
