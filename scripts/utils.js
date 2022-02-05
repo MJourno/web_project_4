@@ -29,15 +29,13 @@
   }
 
 }*/
-
-
 export function openPopup(popup) {
   popup.classList.add('popup_is-open')
   document.addEventListener('keydown', closeByEscape)
   document.addEventListener('click', closeByClick);
 };
 
-function closePopup(popup) {
+export function closePopup(popup) {
   popup.classList.remove('popup_is-open')
   document.removeEventListener('keydown', closeByEscape)
   document.removeEventListener('click', closeByClick);

@@ -39,7 +39,7 @@ const errorClass = document.querySelector(".popup__error_visible");*/
   }
 }*/
 
-/*const toggleButtonState = (inputElements, buttonElement, settings) => {
+  /*const toggleButtonState = (inputElements, buttonElement, settings) => {
   const hasInvalidInput = inputElements.some(inputElement => !inputElement.validity.valid);
 
   if (hasInvalidInput) {
@@ -75,12 +75,12 @@ const errorClass = document.querySelector(".popup__error_visible");*/
   })
 }*/
 
-  export function checkInitialFormValidity(formElement, settings) {
+  /*function checkInitialFormValidity(formElement, settings) {
   const inputElements = [...formElement.querySelectorAll(settings.inputSelector)];
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 
   toggleButtonState(inputElements, buttonElement, settings);
-}
+}*/
 
 /*enableValidation(pageSettings);
 export {checkInputValidity};
