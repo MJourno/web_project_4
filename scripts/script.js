@@ -1,9 +1,10 @@
-import "./FormValidator.js";
-import "./card.js";
+import card from "./card.js";
+import FormValidator from "./FormValidator.js";
 import {openPopup} from "./utils.js";
 import { closePopup } from "./utils.js";
 
-
+//import { checkInitialFormValidity } from "./validate.js";
+//import { toggleButtonState} from "./validate.js";
 //import {checkInputValidity} from "./validate.js";
 //import {checkInitialFormValidity} from "./validate.js";
 //import {pageSettings} from "./validate.js"
@@ -75,7 +76,7 @@ const cardImage = document.querySelector('.element__img');
 const popupImg = document.querySelector('.popup__img');
 const popupCaption = document.querySelector('.popup__caption');
 
-function creatCardElement(cardData) {
+/*function creatCardElement(cardData) {
   const card = cardsElementTemplate.cloneNode(true);
   card.querySelector('.element__title').textContent = cardData.name;
   const cardImage = card.querySelector('.element__img')
@@ -99,7 +100,7 @@ function creatCardElement(cardData) {
   });
 
   return card;
-}
+}*/
 
 popupAddACard.addEventListener('submit', (evt) => {
   evt.preventDefault();
@@ -153,12 +154,12 @@ popupFormEdit.addEventListener('submit', (evt) => {
 
 formButtonEdit.addEventListener('click', () => {
   fillInputs();
-  importcheckInitialFormValidity(popupEdit.querySelector('form'), pageSettings);
+  //checkInitialFormValidity(popupEdit.querySelector('form'), pageSettings);
   openPopup(popupEdit);
 });
 
 profileButtonAdd.addEventListener('click', () => {
-  checkInitialFormValidity(popupAddACard.querySelector('form'), pageSettings);
+  //checkInitialFormValidity(popupAddACard.querySelector('form'), pageSettings);
    openPopup(popupAddACard);
   });
 

@@ -8,7 +8,7 @@ export default class FormValidator {
 
     this._formElement = formElement;
   }
-  checkInitialFormValidity () {
+  checkInitialFormValidity() {
     const inputElements = [...formElement.querySelectorAll(this._inputSelector)];
     const buttonElement = formElement.querySelector(this._submitButtonSelector);
 
