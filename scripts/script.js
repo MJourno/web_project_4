@@ -172,9 +172,15 @@ allCloseButtons.forEach(btn => btn.addEventListener('click', (evt) => {
 /*initialCards.forEach(initialCardData => {
   elements.prepend(creatCardElement(initialCardData));
 });*/
+function handlePreviewPopup (link, name) {
+  openPopup(popupOpenImg)
+  popupImg.src =  this._link;
+  popupImg.alt = this._name;
+  popupCaption.textContent = name;
+}
 
 function creatCard(card) {
-  return new Card (card, '.card-template');
+  return new Card (card, '.card-template', handlePreviewPopup);
 }
 
 initialCards.forEach ((card) => {
