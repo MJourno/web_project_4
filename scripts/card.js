@@ -18,8 +18,8 @@ export default class Card {
     this._handleLikeButton()
     );
 
-    this._deleteButton.addEventListener('click', () =>
-    this._handleDeleteCard()
+    this._deleteButton.addEventListener('click', (e) =>
+    this._handleDeleteCard(e)
     );
 
     /*cardImage.addEventListener('click', (event) => {
@@ -35,11 +35,14 @@ export default class Card {
     likeButton.classList.toggle('element__like-button_active')
   }
 
-  _handleDeleteCard (e) {
+  _handleDeleteCard(e) {
     e.target.closest('.element').remove();
   }
 
   _handlePreviewPicture () {
+    popupImg.src = cardData.link;
+    popupImg.alt = cardData.name;
+    popupCaption.textContent = cardData.name;
     openPopup()
   }
 
@@ -48,10 +51,10 @@ export default class Card {
   render() {
     this._element = this._template.cloneNode(true);
     this._element.querySelector('.element__title').textContent = this._name;
-    this._element = querySelector('.element__img').style.backgroundImage = `url(${this._link})`;
+    this._element.querySelector('.element__img').style.backgroundImage = `url(${this._link})`;
     this._addEventListeners();
 
-    document.querySelector('.elements').append(this._element);
+    document.querySelector('.elements').prepend(this._element);
 
     return this._element;
   }

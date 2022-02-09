@@ -1,4 +1,4 @@
-import card from "./card.js";
+import Card from "./card.js";
 import FormValidator from "./FormValidator.js";
 import {openPopup} from "./utils.js";
 import { closePopup } from "./utils.js";
@@ -106,14 +106,13 @@ const popupCaption = document.querySelector('.popup__caption');
 popupAddACard.addEventListener('submit', (evt) => {
   evt.preventDefault();
   closePopup(popupAddACard);
-  const card  =  new card ({
+  const card  =  creatCard ({
     name:popupAddInputTitle.value,
-    link:popupAddInputlink.value
+    link:popupAddInputlink.value,
   });
 
-  const cardElement = card.render();
+  card.render();
   popupFormAdd.reset();
-  elements.prepend(card);
 });
 
 /*function closeByEscape(evt) {
@@ -161,7 +160,7 @@ formButtonEdit.addEventListener('click', () => {
 });
 
 profileButtonAdd.addEventListener('click', () => {
-  checkInitialFormValidity(popupAddACard.querySelector('form'), pageSettings);
+  /*checkInitialFormValidity*/(popupAddACard.querySelector('form'), pageSettings);
    openPopup(popupAddACard);
   });
 
@@ -175,7 +174,7 @@ allCloseButtons.forEach(btn => btn.addEventListener('click', (evt) => {
 });*/
 
 function creatCard(card) {
-  return new card (card, '.card-template');
+  return new Card (card, '.card-template');
 }
 
 initialCards.forEach ((card) => {
