@@ -11,7 +11,7 @@ export default class Card {
     this._likeButton = this._element.querySelector('.element__like-button');
     this._deleteButton = this._element.querySelector('.element__delete');
 
-   this._popupImg = this._element.querySelector('.element__img').style.backgroundImage = `url(${this._link})`;
+   //this._popupImg = this._element.querySelector('.element__img').style.backgroundImage = `url(${this._link})`;
 
 
     this._likeButton.addEventListener('click', () =>
@@ -21,7 +21,9 @@ export default class Card {
     this._deleteButton.addEventListener('click', (e) =>
     this._handleDeleteCard(e)
     );
-    this._popupImg = this._element.querySelector('.element__img')
+    this._popupImg = this._element.querySelector('.element__img');
+    //this._popupImg.style.backgroundImage = `url(${this._link})`;
+
     this._popupImg.addEventListener('click', () => {
       /*popupImg.src =  this._link;
       popupImg.alt = this._name;
