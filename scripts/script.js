@@ -9,7 +9,7 @@ import { closePopup } from "./utils.js";
 //import {checkInitialFormValidity} from "./validate.js";
 //import {pageSettings} from "./validate.js"
 
-const initialCards = [
+export const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
@@ -102,6 +102,7 @@ const popupCaption = document.querySelector('.popup__caption');
   return card;
 }*/
 
+
 popupAddACard.addEventListener('submit', (evt) => {
   evt.preventDefault();
   closePopup(popupAddACard);
@@ -154,7 +155,8 @@ popupFormEdit.addEventListener('submit', (evt) => {
 
 formButtonEdit.addEventListener('click', () => {
   fillInputs();
-  checkInitialFormValidity(popupEdit.querySelector('form'), pageSettings);
+
+  (popupEdit.querySelector('form'), pageSettings);
   openPopup(popupEdit);
 });
 
@@ -168,7 +170,18 @@ allCloseButtons.forEach(btn => btn.addEventListener('click', (evt) => {
   closePopup(openedPopup)
 }));
 
+/*initialCards.forEach(initialCardData => {
+  elements.prepend(creatCardElement(initialCardData));
+});*/
 
+function creatCard(card) {
+  return new card (card, '.card-template');
+}
+
+initialCards.forEach ((card) => {
+  const newCard = creatCard(card);
+  newCard.render();
+})
 
 const formSelector = '.popup__form';
 const formSettings = {
