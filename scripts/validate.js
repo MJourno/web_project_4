@@ -39,7 +39,7 @@ const errorClass = document.querySelector(".popup__error_visible");*/
   }
 }*/
 
- export const toggleButtonState = (inputElements, buttonElement, settings) => {
+ /*export const toggleButtonState = (inputElements, buttonElement, settings) => {
   const hasInvalidInput = inputElements.some(inputElement => !inputElement.validity.valid);
 
   if (hasInvalidInput) {
@@ -75,7 +75,7 @@ const errorClass = document.querySelector(".popup__error_visible");*/
   })
 }*/
 
-  function checkInitialFormValidity(formElement, settings) {
+  /*function checkInitialFormValidity(formElement, settings) {
   const inputElements = [...formElement.querySelectorAll(settings.inputSelector)];
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 
