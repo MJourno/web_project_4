@@ -105,7 +105,7 @@ const popupCaption = document.querySelector('.popup__caption');
 popupAddACard.addEventListener('submit', (evt) => {
   evt.preventDefault();
   closePopup(popupAddACard);
-  const card  = card ({
+  const card  =  new card ({
     name:popupAddInputTitle.value,
     link:popupAddInputlink.value
   });
@@ -154,12 +154,12 @@ popupFormEdit.addEventListener('submit', (evt) => {
 
 formButtonEdit.addEventListener('click', () => {
   fillInputs();
-  //checkInitialFormValidity(popupEdit.querySelector('form'), pageSettings);
+  checkInitialFormValidity(popupEdit.querySelector('form'), pageSettings);
   openPopup(popupEdit);
 });
 
 profileButtonAdd.addEventListener('click', () => {
-  //checkInitialFormValidity(popupAddACard.querySelector('form'), pageSettings);
+  checkInitialFormValidity(popupAddACard.querySelector('form'), pageSettings);
    openPopup(popupAddACard);
   });
 
