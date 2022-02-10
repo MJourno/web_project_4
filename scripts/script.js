@@ -63,6 +63,7 @@ const popupOpenImg = document.querySelector('.popup_type_img');
 const popupImg = document.querySelector('.popup__img');
 const popupCaption = document.querySelector('.popup__caption');
 
+
 popupAddACard.addEventListener('submit', (evt) => {
   evt.preventDefault();
   closePopup(popupAddACard);
@@ -90,13 +91,13 @@ popupFormEdit.addEventListener('submit', (evt) => {
 formButtonEdit.addEventListener('click', () => {
   fillInputs();
 
-  editProfileValidator.resetFormValidation(popupFormEdit);
+  editProfileValidator.updateFormValidation();
   openPopup(popupEdit);
 });
 
 profileButtonAdd.addEventListener('click', () => {
   popupFormAdd.reset();
-  addCardFormValidator.resetFormValidation(popupFormAdd);
+  addCardFormValidator.updateFormValidation();
   openPopup(popupAddACard);
 });
 

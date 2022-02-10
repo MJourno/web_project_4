@@ -7,12 +7,17 @@ export default class FormValidator {
     this._errorClass = settings.errorClass;
 
     this._formElement = formElement;
+    this._inputElements = [...this._formElement.querySelectorAll(this._inputSelector)];
+    this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
   }
-  resetFormValidation(formElement) {
-    const inputElements = [...formElement.querySelectorAll(this._inputSelector)];
-    const buttonElement = formElement.querySelector(this._submitButtonSelector);
+  updateFormValidation() {
+    //const inputElements = [...formElement.querySelectorAll(this._inputSelector)];
+    //const buttonElement = formElement.querySelector(this._submitButtonSelector);
+    this._inputElements.forEach((input) => {
+      this._hideInputError(input)
+    })
 
-    this.toggleButtonState(inputElements, buttonElement);
+    this.toggleButtonState(this._inputElements, this._buttonElement);
   }
 
   _showInputError(inputElement, validationMessage) {

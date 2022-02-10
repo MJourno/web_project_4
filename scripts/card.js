@@ -6,6 +6,7 @@ export default class Card {
     this._link = cardData.link;
     this._template = document.querySelector(cardTemplateSelector).content.querySelector('.element');
     this._handlePreviewPicture = handlePreviewPicture;
+    this._cardContainer = document.querySelector('.elements');
   }
   _addEventListeners() {
     this._likeButton = this._element.querySelector('.element__like-button');
@@ -26,28 +27,25 @@ export default class Card {
   }
 
   _handleLikeButton() {
-    const likeButton = this._element.querySelector('.element__like-button');
-    likeButton.classList.toggle('element__like-button_active')
+    this._likeButton.classList.toggle('element__like-button_active')
   }
 
   _handleDeleteCard(e) {
-    e.target.closest('.element').remove();
+    this._element.remove();
   }
 
-  _handlePreviewPicture() {
-    openPopup()
-  }
-
-
-
-  render() {
+  creatCard() {
     this._element = this._template.cloneNode(true);
     this._element.querySelector('.element__title').textContent = this._name;
     this._element.querySelector('.element__img').style.backgroundImage = `url(${this._link})`;
+
     this._addEventListeners();
 
-    document.querySelector('.elements').prepend(this._element);
-
     return this._element;
+  }
+
+  render() {
+    const cardData = this.creatCard();
+    this._cardContainer.prepend(cardData);
   }
 }
