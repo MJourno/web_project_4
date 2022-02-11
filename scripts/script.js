@@ -63,19 +63,6 @@ const popupOpenImg = document.querySelector('.popup_type_img');
 const popupImg = document.querySelector('.popup__img');
 const popupCaption = document.querySelector('.popup__caption');
 
-
-popupAddACard.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  closePopup(popupAddACard);
-  const card = creatCard({
-    name: popupAddInputTitle.value,
-    link: popupAddInputlink.value,
-  });
-
-  card.render();
-  popupFormAdd.reset();
-});
-
 function fillInputs() {
   inputUser.value = formUser.textContent;
   inputDescription.value = formDescription.textContent;
@@ -113,13 +100,28 @@ function handlePreviewPopup(link, name) {
   popupCaption.textContent = name;
 }
 
+const cardTemplateSelector = ('#element-template');
+
+popupAddACard.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  closePopup(popupAddACard);
+  const card = creatCard({
+    name: popupAddInputTitle.value,
+    link: popupAddInputlink.value,
+  });
+
+  card.renderCard();
+  popupFormAdd.reset();
+});
+
 function creatCard(card) {
-  return new Card(card, '.card-template', handlePreviewPopup);
+  return new Card(card, cardTemplateSelector, handlePreviewPopup);
 }
+
 
 initialCards.forEach((card) => {
   const newCard = creatCard(card);
-  newCard.render();
+  newCard.renderCard();
 })
 
 const editProfileValidator = new FormValidator(pageSettings, popupFormEdit)
