@@ -63,6 +63,8 @@ const popupOpenImg = document.querySelector('.popup_type_img');
 const popupImg = document.querySelector('.popup__img');
 const popupCaption = document.querySelector('.popup__caption');
 
+
+
 function fillInputs() {
   inputUser.value = formUser.textContent;
   inputDescription.value = formDescription.textContent;
@@ -99,30 +101,59 @@ function handlePreviewPopup(link, name) {
   popupImg.alt = this._name;
   popupCaption.textContent = name;
 }
-
+//
+const cardContainer = document.querySelector('.elements');
 const cardTemplateSelector = ('#element-template');
+//
 
 popupAddACard.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  closePopup(popupAddACard);
-  const card = creatCard({
+  //closePopup(popupAddACard);
+  /*const card = creatCard({
     name: popupAddInputTitle.value,
     link: popupAddInputlink.value,
-  });
+  });*/
+  creatCard({
+    name: popupAddInputTitle.value,
+    link: popupAddInputlink.value,
+  }, cardContainer);
+  //card.renderCard();
+  closePopup(popupAddACard);
+  //popupFormAdd.reset();
 
-  card.renderCard();
-  popupFormAdd.reset();
 });
+
+/*function creatCard(data) {
+  return new Card(data, cardTemplateSelector, handlePreviewPopup);
+
+}*/
 
 function creatCard(card) {
   return new Card(card, cardTemplateSelector, handlePreviewPopup);
 }
 
-
-initialCards.forEach((card) => {
+/*initialCards.forEach((card) => {
   const newCard = creatCard(card);
-  newCard.renderCard();
+  newCard.placeCard();
+})*/
+
+
+initialCards.forEach((data) => {
+ const newCard = new Card (data, cardTemplateSelector, handlePreviewPopup);
+ /*const newCard = creatCard(data);
+ newCard.renderCard();*/
+ //const cardData = newCard.renderCard();
+ cardContainer.prepend(newCard.renderCard());
 })
+
+
+/*
+function placeCard() {
+  const cardData = new Card(newCard.renderCard());
+  //cardContainer.prepend(cardData);
+}*/
+/*const cardContainer = document.querySelector('.elements');
+*/
 
 const editProfileValidator = new FormValidator(pageSettings, popupFormEdit)
 editProfileValidator.enableValidation();
