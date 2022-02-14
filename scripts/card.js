@@ -4,8 +4,6 @@ export default class Card {
     this._link = cardData.link;
     this._template = document.querySelector(cardTemplateSelector).content.querySelector('.element');
     this._handlePreviewPicture = handlePreviewPicture;
-
-    //this._cardContainer = document.querySelector('.elements');
   }
   _addEventListeners() {
     this._likeButton = this._element.querySelector('.element__like-button');
@@ -40,13 +38,6 @@ export default class Card {
 
     this._addEventListeners();
 
-    //this._cardContainer.prepend(this._element);
-
     return this._element;
   }
-
-  /*placeCard() {
-   const cardData = this.renderCard();
-   this._cardContainer.prepend(cardData);
-  }*/
 }

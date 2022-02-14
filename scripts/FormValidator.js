@@ -11,8 +11,6 @@ export default class FormValidator {
     this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
   }
   updateFormValidation() {
-    //const inputElements = [...formElement.querySelectorAll(this._inputSelector)];
-    //const buttonElement = formElement.querySelector(this._submitButtonSelector);
     this._inputElements.forEach((input) => {
       this._hideInputError(input)
     })
