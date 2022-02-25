@@ -1,26 +1,28 @@
 export default class Card {
-  constructor(cardData, cardTemplateSelector, handlePreviewPicture) {
+  constructor(cardData, cardTemplateSelector, handleCardClick) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._template = document.querySelector(cardTemplateSelector).content.querySelector('.element');
-    this._handlePreviewPicture = handlePreviewPicture;
+    this._handleCardClick = handleCardClick;
   }
   _addEventListeners() {
+    //handleLikeButton
     this._likeButton = this._element.querySelector('.element__like-button');
-    this._deleteButton = this._element.querySelector('.element__delete');
-
     this._likeButton.addEventListener('click', () =>
       this._handleLikeButton()
     );
-
+    //handleDeleteCard
+    this._deleteButton = this._element.querySelector('.element__delete');
     this._deleteButton.addEventListener('click', (e) =>
       this._handleDeleteCard(e)
     );
-    this._popupImg = this._element.querySelector('.element__img');
-
-    this._popupImg.addEventListener('click', () => {
-      this._handlePreviewPicture(this._link, this._name)
-    });
+    //handlePreviewPicture
+    this._element.querySelector('.element__img')
+      .addEventListener('click', () => this._handlePreviewPicture()
+      );
+  }
+  _handlePreviewPicture() {
+    this._handleCardClick({link : this._link, name : this._name});
   }
 
   _handleLikeButton() {

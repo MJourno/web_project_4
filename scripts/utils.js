@@ -1,4 +1,4 @@
-export function openPopup(popup) {
+/*export function openPopup(popup) {
   popup.classList.add('popup_is-open')
   document.addEventListener('keydown', closeByEscape)
   document.addEventListener('click', closeByClick);
@@ -21,4 +21,4 @@ function closeByClick(evt) {
   if (evt.target.matches('.popup')) {
     closePopup(evt.target)
   }
-}
+}*/
