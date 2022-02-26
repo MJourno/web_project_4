@@ -1,4 +1,4 @@
-import Popup from './popup';
+/*import Popup from './popup';
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitForm) {
     super(popupSelector);
@@ -36,4 +36,4 @@ export default class PopupWithForm extends Popup {
 
 }
 const AddACardPopup = new PopupWithForm(pageSettings, popupFormAdd);
-const editProfilePopup = new PopupWithForm(pageSettings, popupFormEdit);
+const editProfilePopup = new PopupWithForm(pageSettings, popupFormEdit);*/

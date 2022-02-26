@@ -4,15 +4,15 @@ export default class PopupWithImage extends Popup {
     super(popupSelector);
   }
 
-  open({link, name}) {
-    const popupImg = this._popup.querySelector('.popup__img');
-    const popupCaption = this._popup.querySelector('.popup__caption');
+  open = ({link, name}) => {
+    const imgElement = this._popup.querySelector('.popup__img');
+    const imgCaption = this._popup.querySelector('.popup__caption');
 
-    popupImg.src = link;
-    popupImg.alt = `Image ${name}`;
-    popupCaption.textContent = name;
+    imgElement.src = link;
+    imgElement.alt = `Image ${name}`;
+    imgCaption.textContent = name;
 
     this._popup.classList.add('popup_is-open')
-    this._popup.addEventListener('keydown', this._handleEscClose)
+    this._popup.addEventListener('keyup', this._handleEscClose)
   }
 }

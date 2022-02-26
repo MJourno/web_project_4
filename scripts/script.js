@@ -3,8 +3,10 @@ import FormValidator from './FormValidator.js';
 //import { openPopup } from './utils.js';
 //import { closePopup } from './utils.js';
 import PopupWithImage from './PopupWithImage.js';
+//import PopupWithForm from './PopupWithForm.js';
 //import Popup from './popup';
 import '../pages/index.css';
+//import img
 import logoSrc from "../images/Vector.png";
 const logoImg = document.getElementById('logo');
 logoImg.src=logoSrc;
@@ -45,36 +47,36 @@ const pageSettings = {
   errorClass: 'popup__error_visible',
 };
 //wrappers
-const popupEdit = document.querySelector('.popup_type_edit');
+//const popupEdit = document.querySelector('.popup_type_edit');
 const popupFormEdit = document.querySelector('.popup__form_type_edit');
 const popupFormAdd = document.querySelector('.popup__form_type_add-place');
-const popupAddACard = document.querySelector('.popup_type_add-card');
+//const popupAddACard = document.querySelector('.popup_type_add-card');
 
 //buttonsand other DOM
-const allCloseButtons = document.querySelectorAll('.popup__close');
+//const allCloseButtons = document.querySelectorAll('.popup__close');
 
-const formButtonEdit = document.querySelector('.profile__edit');
-const profileButtonAdd = document.querySelector('.profile__add-button');
-const formUser = document.querySelector('.profile__value_type_name');
-const formDescription = document.querySelector(
-  '.profile__value_type_description');
+//const formButtonEdit = document.querySelector('.profile__edit');
+//const profileButtonAdd = document.querySelector('.profile__add-button');
+//const formUser = document.querySelector('.profile__value_type_name');
+/*const formDescription = document.querySelector(
+  '.profile__value_type_description');*/
 
 //form data
-const inputUser = document.querySelector('.popup__input_type_name');
-const inputDescription = document.querySelector(
+//const inputUser = document.querySelector('.popup__input_type_name');
+/*const inputDescription = document.querySelector(
   '.popup__input_type_description'
-);
+);*/
 
-const popupAddInputTitle = document.querySelector('.popup__input_type_title');
-const popupAddInputlink = document.querySelector('.popup__input_type_link');
+//const popupAddInputTitle = document.querySelector('.popup__input_type_title');
+//const popupAddInputlink = document.querySelector('.popup__input_type_link');
 
 const popupOpenImg = new PopupWithImage('.popup_type_img')
 popupOpenImg.setEventListeners();
 
+//const popupOpenForm = new PopupWithForm()
 
-
-const popupImg = document.querySelector('.popup__img');
-const popupCaption = document.querySelector('.popup__caption');
+//const popupImg = document.querySelector('.popup__img');
+//const popupCaption = document.querySelector('.popup__caption');
 
 /*function fillInputs() {
   inputUser.value = formUser.textContent;
@@ -142,7 +144,8 @@ initialCards.forEach((data) => {
   creatCard(data, cardContainer);
 });
 
-const editProfileValidator = new FormValidator(pageSettings, popupFormEdit);
+
+/*const editProfileValidator = new FormValidator(pageSettings, popupFormEdit);
 editProfileValidator.enableValidation();
 const addCardFormValidator = new FormValidator(pageSettings, popupFormAdd);
-addCardFormValidator.enableValidation();
+addCardFormValidator.enableValidation();*/
