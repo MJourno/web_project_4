@@ -76,7 +76,11 @@ popupOpenImg.setEventListeners();
 //add card form
 const AddACardPopup = new PopupWithForm('.popup_type_add-card');
 AddACardPopup.setEventListeners();
-const editProfilePopup = new PopupWithForm('.popup_type_edit');
+
+const editProfilePopup = new PopupWithForm('.popup_type_edit', (data) => {
+  console.log("data", data);
+  UserInfo.setUserInfo(data);
+});
 editProfilePopup.setEventListeners();
 
 const userName = document.querySelector('.profile__value_type_name');
@@ -91,10 +95,10 @@ const userData = new UserInfo({name: '.profile__value_type_name', job: '.profile
 //const popupImg = document.querySelector('.popup__img');
 //const popupCaption = document.querySelector('.popup__caption');
 
-function fillInputs() {
+/*function fillInputs() {
   inputName.value = userName.textContent;
   inputJob.value = userJob.textContent;
-}
+}*/
 
 /*popupFormEdit.addEventListener('submit', (evt) => {
   evt.preventDefault();
@@ -105,8 +109,8 @@ function fillInputs() {
 
 formButtonEdit.addEventListener('click', () => {
   //fillInputs();
-  //userName.value = userData.getUserInfo().name;
-  //userJob.value = userData.getUserInfo().job;
+  userName.value = userData.getUserInfo().name;
+  userJob.value = userData.getUserInfo().job;
 
   editProfileValidator.updateFormValidation();
   editProfilePopup.open();
