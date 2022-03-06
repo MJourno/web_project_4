@@ -68,8 +68,8 @@ const profileButtonAdd = document.querySelector('.profile__add-button');
   '.popup__input_type_description'
 );*/
 
-//const popupAddInputTitle = document.querySelector('.popup__input_type_title');
-//const popupAddInputlink = document.querySelector('.popup__input_type_link');
+const popupAddInputTitle = document.querySelector('.popup__input_type_title');
+const popupAddInputlink = document.querySelector('.popup__input_type_link');
 
 const popupOpenImg = new PopupWithImage('.popup_type_img')
 popupOpenImg.setEventListeners();
@@ -78,7 +78,7 @@ const AddACardPopup = new PopupWithForm('.popup_type_add-card');
 AddACardPopup.setEventListeners();
 
 const editProfilePopup = new PopupWithForm('.popup_type_edit', (data) => {
-  console.log("data", data);
+  console.log("data");
   UserInfo.setUserInfo(data);
 });
 editProfilePopup.setEventListeners();
@@ -163,6 +163,9 @@ initialCards.forEach((data) => {
   creatCard(data, cardContainer);
 });
 
+/*const cardSection = new Section(
+
+)*/
 
 const editProfileValidator = new FormValidator(pageSettings, popupFormEdit);
 editProfileValidator.enableValidation();

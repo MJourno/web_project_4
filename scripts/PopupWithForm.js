@@ -4,7 +4,6 @@ export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitForm) {
     super(popupSelector);
     this._submitForm = submitForm;
-
     this._formElement = this._popup.querySelector('.popup__form');
     this._inputFieldsData = this._popup.querySelector('.popup__input');
   }
@@ -15,6 +14,7 @@ export default class PopupWithForm extends Popup {
     this._popup.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._getInputValues();
+      this._submitForm();
       this.close();
 
     });
@@ -26,7 +26,9 @@ export default class PopupWithForm extends Popup {
     //data object
     this._inputFieldsDataObject = {};
     //collects data from all  input fields
-
+    this._inputFieldsData.forEach(
+      (input) => (this._inputFieldsDataObject[input.name] = input.value)
+    );
     // returns data as an object
     return this._inputFieldsDataObject;
 
