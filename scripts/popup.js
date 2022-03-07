@@ -10,7 +10,6 @@ export default class Popup {
     //click event listener to the close icon
     this._popupCloseButton = this._popup.querySelector('.popup__close').addEventListener('click', () => {
       this.close();
-      //evt.stopImmediatePropagation();
     })
     //click event listener to the overlay
     this._popup.addEventListener('click', (evt) => {

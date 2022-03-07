@@ -74,11 +74,15 @@ const popupAddInputlink = document.querySelector('.popup__input_type_link');
 const popupOpenImg = new PopupWithImage('.popup_type_img')
 popupOpenImg.setEventListeners();
 //add card form
-const AddACardPopup = new PopupWithForm('.popup_type_add-card');
+const AddACardPopup = new PopupWithForm('.popup_type_add-card',
+(data) => {
+  creatCard(data, '.elements');
+});
+
 AddACardPopup.setEventListeners();
 
 const editProfilePopup = new PopupWithForm('.popup_type_edit', (data) => {
-  console.log("data");
+  //console.log("data");
   UserInfo.setUserInfo(data);
 });
 editProfilePopup.setEventListeners();
@@ -106,6 +110,25 @@ const userData = new UserInfo({name: '.profile__value_type_name', job: '.profile
   userJob.textContent = inputJob.value;
   closePopup(popupEdit);
 });*/
+
+/*// create a form instance
+const form = new SubmitForm({
+  formSelector: ".form-template",
+});
+
+// generate form markup
+const formElement = form.generateForm();
+
+// initialize a class responsible
+// for adding the form to the page
+const formRenderer = new Section({
+    data: []  // we can pass an argument with an empty array
+}, ".form-section");
+
+// add the form to the page
+formRenderer.setItem(formElement);*/
+
+
 
 formButtonEdit.addEventListener('click', () => {
   //fillInputs();
@@ -156,16 +179,29 @@ const cardTemplateSelector = '#element-template';
 
 function creatCard(card, cardContainer) {
   const newCard = new Card(card, cardTemplateSelector, popupOpenImg.open);
-  cardContainer.prepend(newCard.renderCard());
+  // cardContainer.prepend(newCard.renderCard());
+  /*const cardSection = new Section ({
+    newCard,
+    renderer: element => {
+      const card = creatCard(element)
+      cardSection.addItem(card)
+    }
+  },
+  cardContainer)*/
 }
 
 initialCards.forEach((data) => {
   creatCard(data, cardContainer);
 });
+const cardSection = new Section ({
+  newCard,
+  renderer: element => {
+    const card = creatCard(element)
+    cardSection.addItem(card)
+  }
+},
+cardContainer);
 
-/*const cardSection = new Section(
-
-)*/
 
 const editProfileValidator = new FormValidator(pageSettings, popupFormEdit);
 editProfileValidator.enableValidation();
