@@ -3,6 +3,7 @@ export default class Section {
     this._initialArray = items;
     this._renderer = renderer;
     this._container = document.querySelector(cardTemplateSelector);
+    //console.log("initialArray", this._initialArray);
   }
   //render each element on a page
   renderItems() {
@@ -13,11 +14,13 @@ export default class Section {
         this.addItem(this._renderer(item));
       })
     }*/
-    this._initialArray.forEach(item => this._renderer(item));
+    this._initialArray.forEach(item => {
+    const card = this._renderer(item);
+    this.addItem(element);
+    })
   }
   //takes a DOM element and adds it to the container
-  addItem(element) {
-    this._container.prepend(element);
+  addItem(item) {
+    this._container.prepend(item);
   }
 }
-

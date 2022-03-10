@@ -12,6 +12,7 @@ export default class UserInfo {
   }
   //method which takes new user data and adds it on the page
   setUserInfo({name, job}) {
+    //console.log(job)
     this._userName.textContent = name;
     this._userJob.textContent = job;
   }
