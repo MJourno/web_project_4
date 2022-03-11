@@ -1,4 +1,4 @@
-# Project 5: Around The U.S.
+# Project 8: Around The U.S.
 
 an interactive page where users can add, remove, or like photos.
 
@@ -9,6 +9,9 @@ an interactive page where users can add, remove, or like photos.
  css
  html
  BEM Methodology
+ OOP
+ DOM
+
 
 **Figma**
 
