@@ -78,23 +78,24 @@ popupOpenImg.setEventListeners();
 
 //add card form
 const AddACardPopup = new PopupWithForm(submitAddForm, '.popup_type_add-card');
-  /*(data) => {
-    creatCard(data, '.elements');
-  });*/
-  function submitAddForm () {
-    creatCard(
-      {
-        name: popupAddInputTitle.value,
-        link: popupAddInputlink.value,
-      },
-      cardContainer,
-    );
+/*(data) => {
+  creatCard(data, '.elements');
+});*/
+function submitAddForm() {
+  creatCard(
+    {
+      name: popupAddInputTitle.value,
+      link: popupAddInputlink.value,
+    },
+    cardContainer,
+  );
 
-    AddACardPopup.close();
+  AddACardPopup.close();
 
-  }
-
+}
 AddACardPopup.setEventListeners();
+
+
 
 //edit form
 
@@ -105,12 +106,21 @@ AddACardPopup.setEventListeners();
     job: job.value
   });
 });*/
-const editProfilePopup = new PopupWithForm(submitEditForm, '.popup_type_edit');
+const editProfilePopup = new PopupWithForm(submitEditForm,'.popup_type_edit');
 editProfilePopup.setEventListeners();
 
+/*function submitEditForm() {
+  //const name = document.querySelector('.profile__value_type_name');
+  //const job = document.querySelector('.profile__value_type_description');
+
+  userData.setUserInfo(data);
+  //userData.setUserInfo(editProfilePopup.getInputValues());
+
+  editProfilePopup.close();
+}*/
 function submitEditForm () {
-  const name = document.querySelector('.profile__value_type_name');
-  const job = document.querySelector('.profile__value_type_description');
+  const name =document.querySelector('.popup__input_type_name');
+  const job = document.querySelector('.popup__input_type_description');
 
   userData.setUserInfo({
     name: name.value,
@@ -175,12 +185,12 @@ const form = new SubmitForm({
 
 formButtonEdit.addEventListener('click', () => {
   //fillInputs();
-  //console.log("userData", userData.getUserInfo());
+  console.log("userData", userData.getUserInfo());
   inputName.value = userData.getUserInfo().name;
   inputJob.value = userData.getUserInfo().job;
 
   editProfileValidator.updateFormValidation();
-  editProfilePopup.setEventListeners();
+  //editProfilePopup.setEventListeners();
   editProfilePopup.open();
 });
 
@@ -224,15 +234,6 @@ function creatCard(card, cardContainer) {
   const newCard = new Card(card, cardTemplateSelector, popupOpenImg.open);
   //return newCard.renderCard();
   cardContainer.prepend(newCard.renderCard());
-
-  /*const cardSection = new Section ({
-    newCard,
-    renderer: element => {
-      const card = creatCard(element)
-      cardSection.addItem(card)
-    }
-  },
-  cardContainer)*/
 }
 
 initialCards.forEach((data) => {
@@ -245,23 +246,28 @@ initialCards.forEach((data) => {
 // add the form to the page
 formRenderer.setItem(formElement);*/
 
-const cardSection = new Section ({
-  //newCard,
-  renderer: element => {
+const cardSection = new Section({
+  items:initialCards,
+
+  renderer: (data) => {
+    cardSection.addItem(creatCard(data));
+  },
+  /*renderer: element => {
     const card = creatCard(element)
     cardSection.addItem(card)
-  }
-  },
-  'elements'
+  }*/
+},
+//  'elements'
 )
+
 //const items = initialCards;
 /*const cardSection = new Section(
     {items,
     renderer : creatCard}
   ,
   cardContainer
-)
-cardSection.renderItems()*/
+)*/
+//cardSection.renderItems()
 
 
 // enable validation

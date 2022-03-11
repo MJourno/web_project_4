@@ -36,10 +36,11 @@ export default class PopupWithForm extends Popup {
   }
 
   close() {
-    //modifies the close() parent method
-    super.close();
+
     //reset the form once the popup is closed
     this._formElement.reset();
+        //modifies the close() parent method
+        super.close();
   }
 
 

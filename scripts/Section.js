@@ -13,6 +13,7 @@ export default class Section {
   }
   //takes a DOM element and adds it to the container
   addItem(item) {
+    console.log('addItem');
     this._container.prepend(item);
   }
 }
