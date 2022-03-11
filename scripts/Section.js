@@ -8,9 +8,10 @@ export default class Section {
   //render each element on a page
   renderItems() {
     console.log('sectionRender')
-    this._initialArray.forEach(item => {
+    /*this._initialArray.forEach(item => {
     this.addItem(this._renderer(item));
-    })
+    })*/
+    this._initialArray.forEach(this._renderer);
   }
   //takes a DOM element and adds it to the container
   addItem(item) {

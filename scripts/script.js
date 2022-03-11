@@ -71,6 +71,9 @@ const inputDescription = document.querySelector(
 const popupAddInputTitle = document.querySelector('.popup__input_type_title');
 const popupAddInputlink = document.querySelector('.popup__input_type_link');
 
+const cardContainer = document.querySelector('.elements');
+const cardTemplateSelector = '#element-template';
+
 const userData = new UserInfo({ name: '.profile__value_type_name', job: '.profile__value_type_description' });
 
 const popupOpenImg = new PopupWithImage('.popup_type_img');
@@ -232,19 +235,19 @@ profileButtonAdd.addEventListener('click', () => {
   );
   closePopup(popupAddACard);
 });*/
-const cardContainer = document.querySelector('.elements');
-const cardTemplateSelector = '#element-template';
 
-function creatCard(card, cardContainer) {
+
+function creatCard(card) {
   const newCard = new Card(card, cardTemplateSelector, popupOpenImg.open);
-  //console.log("newCard")
-  //return newCard.renderCard();
-  cardContainer.prepend(newCard.renderCard());
+  console.log("newCard")
+  return newCard.renderCard();
+  //cardContainer.prepend(newCard.renderCard());
 }
 
-initialCards.forEach((data) => {
+/*initialCards.forEach((data) => {
+  console.log("initialCards")
   creatCard(data, cardContainer);
-});
+});*/
 
 /*const formRenderer = new Section({
   data: []  // we can pass an argument with an empty array
@@ -263,7 +266,7 @@ const cardSection = new Section({
     cardSection.addItem(card)
   }*/
 },
-//  'elements'
+ '.elements'
 )
 
 //const items = initialCards;
@@ -273,7 +276,7 @@ const cardSection = new Section({
   ,
   cardContainer
 )*/
-//cardSection.renderItems()
+cardSection.renderItems()
 
 
 // enable validation
