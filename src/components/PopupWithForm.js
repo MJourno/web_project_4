@@ -32,17 +32,13 @@ export default class PopupWithForm extends Popup {
     // returns data as an object
     console.log('inputs', this._inputFieldsDataObject);
     return this._inputFieldsDataObject;
-
   }
 
   close() {
-
     //reset the form once the popup is closed
     this._formElement.reset();
         //modifies the close() parent method
         super.close();
   }
-
-
 }
 
