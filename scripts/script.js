@@ -224,6 +224,7 @@ function creatCard(card, cardContainer) {
   const newCard = new Card(card, cardTemplateSelector, popupOpenImg.open);
   //return newCard.renderCard();
   cardContainer.prepend(newCard.renderCard());
+
   /*const cardSection = new Section ({
     newCard,
     renderer: element => {
@@ -244,7 +245,7 @@ initialCards.forEach((data) => {
 // add the form to the page
 formRenderer.setItem(formElement);*/
 
-/*const cardSection = new Section ({
+const cardSection = new Section ({
   //newCard,
   renderer: element => {
     const card = creatCard(element)
@@ -252,7 +253,7 @@ formRenderer.setItem(formElement);*/
   }
   },
   'elements'
-)*/
+)
 //const items = initialCards;
 /*const cardSection = new Section(
     {items,
