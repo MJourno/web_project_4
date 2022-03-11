@@ -100,26 +100,26 @@ AddACardPopup.setEventListeners();
 
 /*const editProfilePopup = new PopupWithForm('.popup_type_edit', () => {
   console.log(userData);
-
   userData.setUserInfo({
     name: name.value,
     job: job.value
   });
 });*/
 const editProfilePopup = new PopupWithForm(submitEditForm, '.popup_type_edit');
+editProfilePopup.setEventListeners();
+
 function submitEditForm () {
   const name = document.querySelector('.profile__value_type_name');
   const job = document.querySelector('.profile__value_type_description');
 
-  /*userData.setUserInfo({
+  userData.setUserInfo({
     name: name.value,
     job: job.value,
-  });*/
-  userData.setUserInfo(editProfilePopup.getInputValues());
+  });
+  //userData.setUserInfo(editProfilePopup.getInputValues());
 
   editProfilePopup.close();
 }
-editProfilePopup.setEventListeners();
 
 
 /*function submitEditForm (evt) {
@@ -210,7 +210,6 @@ const cardTemplateSelector = '#element-template';
 
 /*popupFormAdd.addEventListener('submit', (evt) => {
   evt.preventDefault();
-
   creatCard(
     {
       name: popupAddInputTitle.value,
@@ -218,7 +217,6 @@ const cardTemplateSelector = '#element-template';
     },
     cardContainer,
   );
-
   closePopup(popupAddACard);
 });*/
 
@@ -243,7 +241,6 @@ initialCards.forEach((data) => {
 /*const formRenderer = new Section({
   data: []  // we can pass an argument with an empty array
 }, ".form-section");
-
 // add the form to the page
 formRenderer.setItem(formElement);*/
 
@@ -263,7 +260,6 @@ formRenderer.setItem(formElement);*/
   ,
   cardContainer
 )
-
 cardSection.renderItems()*/
 
 
