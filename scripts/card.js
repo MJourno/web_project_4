@@ -34,6 +34,7 @@ export default class Card {
   }
 
   renderCard() {
+    console.log('renderCard');
     this._element = this._template.cloneNode(true);
     this._element.querySelector('.element__title').textContent = this._name;
     this._element.querySelector('.element__img').style.backgroundImage = `url(${this._link})`;

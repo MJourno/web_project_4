@@ -82,13 +82,17 @@ const AddACardPopup = new PopupWithForm(submitAddForm, '.popup_type_add-card');
   creatCard(data, '.elements');
 });*/
 function submitAddForm() {
+  console.log('submitAddForm');
+  cardSection.addItem(
   creatCard(
     {
       name: popupAddInputTitle.value,
       link: popupAddInputlink.value,
     },
     cardContainer,
+  )
   );
+;
 
   AddACardPopup.close();
 
@@ -214,8 +218,7 @@ profileButtonAdd.addEventListener('click', () => {
   popupCaption.textContent = name;
 }*/
 //
-const cardContainer = document.querySelector('.elements');
-const cardTemplateSelector = '#element-template';
+
 //
 
 /*popupFormAdd.addEventListener('submit', (evt) => {
@@ -229,9 +232,12 @@ const cardTemplateSelector = '#element-template';
   );
   closePopup(popupAddACard);
 });*/
+const cardContainer = document.querySelector('.elements');
+const cardTemplateSelector = '#element-template';
 
 function creatCard(card, cardContainer) {
   const newCard = new Card(card, cardTemplateSelector, popupOpenImg.open);
+  //console.log("newCard")
   //return newCard.renderCard();
   cardContainer.prepend(newCard.renderCard());
 }

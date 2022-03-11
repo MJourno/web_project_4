@@ -7,13 +7,14 @@ export default class Section {
   }
   //render each element on a page
   renderItems() {
+    console.log('sectionRender')
     this._initialArray.forEach(item => {
     this.addItem(this._renderer(item));
     })
   }
   //takes a DOM element and adds it to the container
   addItem(item) {
-    console.log('addItem');
+    console.log('sectionAddItem');
     this._container.prepend(item);
   }
 }
