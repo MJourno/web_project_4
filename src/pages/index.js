@@ -81,36 +81,32 @@ const cardSection = new Section({
   '.elements'
 )
 
-function submitAddForm() {
-  console.log('submitAddForm');
+function submitAddForm(data) {
+  const { title, link } = data;
   cardSection.addItem(
     creatCard(
       {
-        name: popupAddInputTitle.value,
-        link: popupAddInputlink.value,
+        title: title,
+        link: link,
       },
       cardContainer,
     )
   );
   ;
-
   addACardPopup.close();
 }
 
-function submitEditForm() {
-  const name = document.querySelector('.popup__input_type_name');
-  const job = document.querySelector('.popup__input_type_description');
-
+function submitEditForm(data) {
+  const { name, job } = data;
   userData.setUserInfo({
-    name: name.value,
-    job: job.value,
+    name: name,
+    job: job,
   });
 
   editProfilePopup.close();
 }
 
 formButtonEdit.addEventListener('click', () => {
-  console.log("userData", userData.getUserInfo());
   inputName.value = userData.getUserInfo().name;
   inputJob.value = userData.getUserInfo().job;
 
