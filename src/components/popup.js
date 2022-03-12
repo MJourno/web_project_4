@@ -1,23 +1,16 @@
-//const ESC_KEYCODE = 27;
-
 export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
-    this.close.bind(this)
+    this._handleEscClose= this._handleEscClose.bind(this);
 
   }
   setEventListeners() {
-    //click event listener to the close icon
-    this._popupCloseButton = this._popup.querySelector('.popup__close').addEventListener('click', () => {
-      this.close();
-    })
-    //click event listener to the overlay
+    //click event listener to the overlay &  close icon
     this._popup.addEventListener('click', (evt) => {
-      if (evt.target.matches('.popup')) {
+      if (evt.target.matches('.popup_is-open') || evt.target.matches('.popup__close')) {
         this.close();
       }
     })
-
   }
 
   open() {
