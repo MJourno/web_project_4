@@ -67,7 +67,6 @@ const editProfilePopup = new PopupWithForm(submitEditForm, '.popup_type_edit');
 
 function creatCard(card) {
   const newCard = new Card(card, cardTemplateSelector, popupOpenImg.open);
-  console.log("newCard")
   return newCard.renderCard();
 }
 
@@ -81,8 +80,7 @@ const cardSection = new Section({
   '.elements'
 )
 
-function submitAddForm(data) {
-  const { title, link } = data;
+function submitAddForm({ title, link }) {
   cardSection.addItem(
     creatCard(
       {
@@ -96,8 +94,7 @@ function submitAddForm(data) {
   addACardPopup.close();
 }
 
-function submitEditForm(data) {
-  const { name, job } = data;
+function submitEditForm({ name, job }) {
   userData.setUserInfo({
     name: name,
     job: job,

@@ -22,7 +22,7 @@ export default class Popup {
     document.removeEventListener('keyup', this._handleEscClose)
   }
 
-  _handleEscClose = (evt) => {
+  _handleEscClose(evt) {
     evt.preventDefault();
 
     if (evt.key === 'Escape') {
