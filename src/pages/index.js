@@ -80,27 +80,13 @@ const cardSection = new Section({
   '.elements'
 )
 
-function submitAddForm({ title, link }) {
+function submitAddForm(cardData) {
   cardSection.addItem(
-    creatCard(
-      {
-        title: title,
-        link: link,
-      },
-      cardContainer,
-    )
-  );
-  ;
-  addACardPopup.close();
+    creatCard(cardData));
 }
 
 function submitEditForm({ name, job }) {
-  userData.setUserInfo({
-    name: name,
-    job: job,
-  });
-
-  editProfilePopup.close();
+  userData.setUserInfo({ name, job });
 }
 
 formButtonEdit.addEventListener('click', () => {
