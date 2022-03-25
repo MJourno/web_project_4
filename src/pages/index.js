@@ -5,34 +5,34 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
+import Api from '../components/Api.js';
 
-
-export const initialCards = [
-  {
-    name: 'Yosemite Valley',
-    link: 'https://code.s3.yandex.net/web-code/yosemite.jpg',
-  },
-  {
-    name: 'Lake Louise',
-    link: 'https://code.s3.yandex.net/web-code/lake-louise.jpg',
-  },
-  {
-    name: 'Bald Mountains',
-    link: 'https://code.s3.yandex.net/web-code/bald-mountains.jpg',
-  },
-  {
-    name: 'Latemar',
-    link: 'https://code.s3.yandex.net/web-code/latemar.jpg',
-  },
-  {
-    name: 'Vanoise National Park',
-    link: 'https://code.s3.yandex.net/web-code/vanoise.jpg',
-  },
-  {
-    name: 'Lago di Braies',
-    link: 'https://code.s3.yandex.net/web-code/lago.jpg',
-  },
-];
+/*const initialCards = [
+ {
+   name: 'Yosemite Valley',
+   link: 'https://code.s3.yandex.net/web-code/yosemite.jpg',
+ },
+ {
+   name: 'Lake Louise',
+   link: 'https://code.s3.yandex.net/web-code/lake-louise.jpg',
+ },
+ {
+   name: 'Bald Mountains',
+   link: 'https://code.s3.yandex.net/web-code/bald-mountains.jpg',
+ },
+ {
+   name: 'Latemar',
+   link: 'https://code.s3.yandex.net/web-code/latemar.jpg',
+ },
+ {
+   name: 'Vanoise National Park',
+   link: 'https://code.s3.yandex.net/web-code/vanoise.jpg',
+ },
+ {
+   name: 'Lago di Braies',
+   link: 'https://code.s3.yandex.net/web-code/lago.jpg',
+ },
+];*/
 const pageSettings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -67,31 +67,59 @@ const editProfilePopup = new PopupWithForm(submitEditForm, '.popup_type_edit');
 
 function creatCard(card) {
   const newCard = new Card(card, cardTemplateSelector, popupOpenImg.open);
-  return newCard.renderCard();
+  return newCard.renderCard(card);
 }
 
 const cardSection = new Section({
-  items: initialCards,
-
-  renderer: (data) => {
-    cardSection.addItem(creatCard(data));
+  renderer: (element) => {
+    const newElement = creatCard(element);
+    cardSection.addItem(newElement);
   },
 },
   '.elements'
 )
 
+const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/group-12",
+  headers: {
+    authorization: "8458544b-9413-4e1b-a96c-c8cb18c89656",
+    "Content-Type": "application/json"
+  }
+});
+
+api.getInitialCards()
+  .then(res => {
+    cardSection.renderItems(res)
+    //console.log('getInitialCards', res);
+  })
+
+api.loadUserInfo()
+  .then(res => {
+    userData.setUserInfo({ name: res.name, about: res.about });
+    //console.log('loadUserInfo', res);
+  })
+
 function submitAddForm(cardData) {
-  cardSection.addItem(
-    creatCard(cardData));
+  console.log('cardData', cardData);// name link
+  api.createCard(cardData)
+    .then(res => {
+      console.log('res', res)
+      cardSection.addItem(creatCard(res));
+    })
 }
 
-function submitEditForm({ name, job }) {
-  userData.setUserInfo({ name, job });
+function submitEditForm({ name, about }) {
+  //console.log('submitEditForm', { name, about });
+  api.editProfile({ name, about })
+    .then(res => {
+      //console.log('submitEditForm', res)
+      userData.setUserInfo({ name: res.name, about: res.about });
+    })
 }
 
 formButtonEdit.addEventListener('click', () => {
   inputName.value = userData.getUserInfo().name;
-  inputJob.value = userData.getUserInfo().job;
+  inputJob.value = userData.getUserInfo().about;
 
   editProfileValidator.updateFormValidation();
   editProfilePopup.open();
@@ -104,7 +132,7 @@ profileButtonAdd.addEventListener('click', () => {
 });
 
 //initialize instances
-cardSection.renderItems()
+//cardSection.renderItems()
 popupOpenImg.setEventListeners();
 addACardPopup.setEventListeners();
 editProfilePopup.setEventListeners();

@@ -26,7 +26,7 @@ export default class PopupWithForm extends Popup {
       )
     );
     // returns data as an object
-    console.log('inputs', this._inputFieldsDataObject);
+    //console.log('inputs', this._inputFieldsDataObject);
     return this._inputFieldsDataObject;
   }
 

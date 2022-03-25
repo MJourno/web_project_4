@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--<link rel="stylesheet" href="./pages/index.css">-->
   <title>Around the U.S.</title>
 </head>
 
@@ -40,7 +39,7 @@
           <input name="name" id='input_type_name' class="popup__input popup__input_type_name" type="text"
             placeholder="Name" required minlength="2" maxlength="40">
           <span id='input_type_name-error' class="popup__error"></span>
-          <input name="job" id='input_type_description' class="popup__input popup__input_type_description" type="text"
+          <input name="about" id='input_type_description' class="popup__input popup__input_type_description" type="text"
             placeholder="About me" required minlength="2" maxlength="200">
           <span id='input_type_description-error' class="popup__error"></span>
           <button aria-label="save" type="submit" class="button popup__save">Save</button>
@@ -52,7 +51,7 @@
         <button aria-label="Close" type="button" class="button popup__close popup__close-add"></button>
         <form name="new place" class="popup__form popup__form_type_add-place" novalidate>
           <h2 class="popup__title">New place</h2>
-          <input name="title" id='input_type_title' class="popup__input popup__input_type_title" type="text"
+          <input name="name" id='input_type_title' class="popup__input popup__input_type_title" type="text"
             placeholder="Title" required minlength="1" maxlength="30">
           <span id="input_type_title-error" class="popup__error"></span>
           <input name="link" id='input_type_link' class="popup__input popup__input_type_link" type="url"
@@ -69,11 +68,28 @@
         <p class="popup__caption"></p>
       </div>
     </div>
+    <div class="popup popup_type_delete-card">
+      <div class="popup__container popup__container-delete">
+        <button aria-label="Close" type="button" class="button popup__close popup__close-delete"></button>
+        <form name="delete-form" class="popup__form popup__form_type_delete">
+          <h2 class="popup__title">Are you sure?</h2>
+          <button aria-label="Yes" type="submit" class="button popup__delete">Create</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_edit-profile-img">
+      <div class="popup__container popup__container-edit-profile-img">
+        <button aria-label="Close" type="button" class="button popup__close popup__close-edit-profile-img"></button>
+        <form name="delete-form" class="popup__form popup__form_type_delete">
+          <h2 class="popup__title">Change profile picture</h2>
+          <input type="url" id="input_type_link" class="popup__input popup__input_type_link" name="edit-profile-img"
+            placeholder="Image link" required>
+          <span id="input_type_link-error" class="popup__error"></span>
+          <button aria-label="save" type="submit" class="button popup__save">Save</button>
+        </form>
+      </div>
+    </div>
   </div>
-  <!--
-   <script type="module" src="./scripts/script.js" defer></script>
--->
-
   <template id="element-template" class="card-template">
     <li class="element card">
       <button class="button element__delete"></button>
