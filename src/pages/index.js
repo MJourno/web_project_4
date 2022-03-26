@@ -62,7 +62,7 @@ const confirmModal = new PopupWithSubmit('.popup_type_delete-card');
 const editProfileValidator = new FormValidator(pageSettings, popupFormEdit);
 const addCardFormValidator = new FormValidator(pageSettings, popupFormAdd);
 const editProfileImgValidator = new FormValidator(pageSettings, popupProfileImg);
-const userData = new UserInfo({ userNameSelector: '.profile__value_type_name', userJobSelector: '.profile__value_type_description' });
+const userData = new UserInfo({ userNameSelector: '.profile__value_type_name', userJobSelector: '.profile__value_type_description', userAvatarSelector: '.avatar' });
 
 const popupOpenImg = new PopupWithImage('.popup_type_img');
 const addACardPopup = new PopupWithForm(submitAddForm, '.popup_type_add-card');
@@ -163,19 +163,16 @@ function submitAddForm(cardData) {
 }
 
 function submitEditForm({ name, about }) {
-  //console.log('submitEditForm', { name, about });
   api.editProfile({ name, about })
     .then(res => {
-      //console.log('submitEditForm', res)
       userData.setUserInfo({ name: res.name, about: res.about });
     })
 }
 function submitEditImgForm({ avatar }) {
   console.log('submitEditImgForm', { avatar });
-  api.editProfile({ avatar })
+  api.updateProfileImg({ avatar })
     .then(res => {
-      //console.log('submitEditForm', res)
-      userData.setUserInfo({ avatar: res.avatar});
+      userData.setUserInfo({ avatar: res.avatar });
     })
 }
 
