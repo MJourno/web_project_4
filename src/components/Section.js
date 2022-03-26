@@ -1,6 +1,5 @@
 export default class Section {
-  constructor({ /*items,*/ renderer }, cardTemplateSelector) {
-    //this._initialArray = items;
+  constructor({ renderer }, cardTemplateSelector) {
     this._renderer = renderer;
     this._container = document.querySelector(cardTemplateSelector);
     //console.log("initialArray", this._initialArray);

@@ -14,10 +14,11 @@ export default class UserInfo {
     };
   }
   //method which takes new user data and adds it on the page
-  setUserInfo({name, about, avatar}) {
+  setUserInfo({name, about}) {
     this._userNameElement.textContent = name;
     this._userJobElement.textContent = about;
-    this._uuserAvatarSelector.style.backgroundImage = avatar ;
-
+  }
+  setUserAvatar({avatar}) {
+    this._userAvatarSelector.style = `background-image: url(${avatar})`;
   }
 }

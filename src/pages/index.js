@@ -7,32 +7,7 @@ import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 import PopupWithSubmit from '../components/popupWithSubmit';
-/*const initialCards = [
- {
-   name: 'Yosemite Valley',
-   link: 'https://code.s3.yandex.net/web-code/yosemite.jpg',
- },
- {
-   name: 'Lake Louise',
-   link: 'https://code.s3.yandex.net/web-code/lake-louise.jpg',
- },
- {
-   name: 'Bald Mountains',
-   link: 'https://code.s3.yandex.net/web-code/bald-mountains.jpg',
- },
- {
-   name: 'Latemar',
-   link: 'https://code.s3.yandex.net/web-code/latemar.jpg',
- },
- {
-   name: 'Vanoise National Park',
-   link: 'https://code.s3.yandex.net/web-code/vanoise.jpg',
- },
- {
-   name: 'Lago di Braies',
-   link: 'https://code.s3.yandex.net/web-code/lago.jpg',
- },
-];*/
+
 const pageSettings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -50,12 +25,8 @@ const formButtonEdit = document.querySelector('.profile__edit');
 const profileImgEdit = document.querySelector('.profile__edit-img-button');
 const profileButtonAdd = document.querySelector('.profile__add-button');
 //form data
-const inputProfileImg = document.querySelector('.popup__input_type_avatar');
 const inputName = document.querySelector('.popup__input_type_name');
 const inputJob = document.querySelector('.popup__input_type_description');
-const popupAddInputTitle = document.querySelector('.popup__input_type_title');
-const popupAddInputlink = document.querySelector('.popup__input_type_link');
-const cardContainer = document.querySelector('.elements');
 const cardTemplateSelector = '#element-template';
 //instances of the classes
 const confirmModal = new PopupWithSubmit('.popup_type_delete-card');
@@ -67,22 +38,17 @@ const userData = new UserInfo({ userNameSelector: '.profile__value_type_name', u
 const popupOpenImg = new PopupWithImage('.popup_type_img');
 const addACardPopup = new PopupWithForm(submitAddForm, '.popup_type_add-card');
 const editProfilePopup = new PopupWithForm(submitEditForm, '.popup_type_edit');
-const editProfileImgPopup = new PopupWithForm(submitEditImgForm, '.popup_type_edit-profile-img');//popup
+const editProfileImgPopup = new PopupWithForm(submitEditImgForm, '.popup_type_edit-profile-img');
 
 
 function creatCard(card) {
   const newCard = new Card(card, cardTemplateSelector, popupOpenImg.open,
     {
       handleDeleteCard: (id) => {
-        //console.log('123456', card);
         confirmModal.open()
-
         confirmModal.setAction(() => {
-          //submit modal
           api.deleteCard(id)
             .then(res => {
-              //console.log('deleteCard', res)
-              //remove from DOM
               newCard.removeCard()
               confirmModal.close()
             })
@@ -92,21 +58,16 @@ function creatCard(card) {
         const isAlreadyLiked = newCard.isLiked()
 
         if (isAlreadyLiked) {
-          console.log('unLikeCard')
           api.disLikeCard(id)
             .then(res => {
               newCard.likeCard(res.likes)
             })
-          //remove like
         } else {
-          console.log('likeCard')
           api.likeCard(id)
             .then(res => {
               newCard.likeCard(res.likes)
-              console.log('like', res);
             })
         }
-        /**/
       }
     },
     userId
@@ -131,34 +92,27 @@ const api = new Api({
   }
 });
 
-/*api.getInitialCards()
-  .then(res => {
-    cardSection.renderItems(res)
-    //console.log('getInitialCards', res);
-  })
-
-api.loadUserInfo()
-  .then(res => {
-    userData.setUserInfo({ name: res.name, about: res.about });
-    //console.log('loadUserInfo', res);
-  })*/
 let userId
 
 
 Promise.all([api.getInitialCards(), api.loadUserInfo()])
   .then(([cardData, userInfo]) => {
-    console.log('cardData', cardData)
     userId = userInfo._id
     cardSection.renderItems(cardData);
     userData.setUserInfo({ name: userInfo.name, about: userInfo.about });
   })
+  .catch((err) => {
+    console.log(err);
+  })
 
 function submitAddForm(cardData) {
-  console.log('cardData', cardData);// name link
   api.createCard(cardData)
     .then(res => {
-      //console.log('res', res)
       cardSection.addItem(creatCard(res));
+      addACardPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
     })
 }
 
@@ -166,12 +120,21 @@ function submitEditForm({ name, about }) {
   api.editProfile({ name, about })
     .then(res => {
       userData.setUserInfo({ name: res.name, about: res.about });
+      editProfilePopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
     })
 }
-function submitEditImgForm({ avatar }) {
-  api.updateProfileImg({ avatar })
+
+function submitEditImgForm(avatar) {
+  api.updateProfileImg(avatar)
     .then(res => {
-      userData.setUserInfo({ avatar: res.avatar });
+      userData.setUserAvatar({ avatar: res.avatar });
+      editProfileImgPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
     })
 }
 
@@ -190,13 +153,11 @@ profileButtonAdd.addEventListener('click', () => {
 });
 
 profileImgEdit.addEventListener('click', () => {
-//  inputProfileImg.value = userData.getUserInfo().avatar;
   editProfileImgValidator.updateFormValidation();
   editProfileImgPopup.open();
 })
 
 //initialize instances
-//cardSection.renderItems()
 editProfileImgPopup.setEventListeners();
 confirmModal.setEventListeners();
 popupOpenImg.setEventListeners();

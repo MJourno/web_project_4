@@ -23,7 +23,6 @@ export default class Api {
   }
 
   createCard(data) {
-    //console.log('createCard', data);
     return customFetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
       method: "POST",
@@ -63,7 +62,7 @@ export default class Api {
     return customFetch(`${this._baseUrl}/users/me/avatar`, {
       headers: this._headers,
       method: "PATCH",
-      body: JSON.stringify({ avatar: link })
+      body: JSON.stringify(link)
 
     })
   }

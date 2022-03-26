@@ -9,7 +9,7 @@
   padding: 0px;
   background-size: contain;
   border: none;
-  z-index: 4;
+  z-index: 2;
 }
 .element__like-button:hover {
   opacity: 0.5;
