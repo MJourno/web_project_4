@@ -169,7 +169,6 @@ function submitEditForm({ name, about }) {
     })
 }
 function submitEditImgForm({ avatar }) {
-  console.log('submitEditImgForm', { avatar });
   api.updateProfileImg({ avatar })
     .then(res => {
       userData.setUserInfo({ avatar: res.avatar });
@@ -191,13 +190,14 @@ profileButtonAdd.addEventListener('click', () => {
 });
 
 profileImgEdit.addEventListener('click', () => {
-  inputProfileImg.value = userData.getUserInfo().avatar;
+//  inputProfileImg.value = userData.getUserInfo().avatar;
   editProfileImgValidator.updateFormValidation();
   editProfileImgPopup.open();
 })
 
 //initialize instances
 //cardSection.renderItems()
+editProfileImgPopup.setEventListeners();
 confirmModal.setEventListeners();
 popupOpenImg.setEventListeners();
 addACardPopup.setEventListeners();
