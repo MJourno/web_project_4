@@ -1,11 +1,11 @@
 const customFetch = (url, headers) =>
   fetch(url, headers)
-  .then(res => res.ok ? res.json() : Promise.reject(res.statusText))
-  .catch(console.log)
+    .then(res => res.ok ? res.json() : Promise.reject(res.statusText))
+    .catch(console.log)
 
 
 export default class Api {
-  constructor({baseUrl, headers}) {
+  constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
@@ -30,11 +30,19 @@ export default class Api {
       body: JSON.stringify(data)
     })
   }
+
   editProfile(data) {
     return customFetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
       method: "PATCH",
       body: JSON.stringify(data)
+    })
+  }
+
+  deleteCard(cardId) {
+    return customFetch(`${this._baseUrl}/cards/${cardId}`, {
+      headers: this._headers,
+      method: "DELETE",
     })
   }
 }

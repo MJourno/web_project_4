@@ -6,7 +6,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
-
+import PopupWithSubmit from '../components/popupWithSubmit';
 /*const initialCards = [
  {
    name: 'Yosemite Valley',
@@ -55,6 +55,7 @@ const popupAddInputlink = document.querySelector('.popup__input_type_link');
 const cardContainer = document.querySelector('.elements');
 const cardTemplateSelector = '#element-template';
 //instances of the classes
+const confirmModal = new PopupWithSubmit('.popup_type_delete-card');
 const editProfileValidator = new FormValidator(pageSettings, popupFormEdit);
 const addCardFormValidator = new FormValidator(pageSettings, popupFormAdd);
 const userData = new UserInfo({ userNameSelector: '.profile__value_type_name', userJobSelector: '.profile__value_type_description' });
@@ -66,7 +67,25 @@ const addACardPopup = new PopupWithForm(submitAddForm, '.popup_type_add-card');
 const editProfilePopup = new PopupWithForm(submitEditForm, '.popup_type_edit');
 
 function creatCard(card) {
-  const newCard = new Card(card, cardTemplateSelector, popupOpenImg.open);
+  const newCard = new Card(card, cardTemplateSelector, popupOpenImg.open,
+    {
+      handleDeleteCard: (id) => {
+        console.log('123456', card);
+        confirmModal.open()
+
+        confirmModal.setAction(() => {
+          //submit modal
+          api.deleteCard(id)
+            .then(res => {
+              console.log('deleteCard', res)
+              //remove from DOM
+
+            })
+        })
+
+      }
+    }
+  );
   return newCard.renderCard(card);
 }
 
@@ -133,6 +152,7 @@ profileButtonAdd.addEventListener('click', () => {
 
 //initialize instances
 //cardSection.renderItems()
+confirmModal.setEventListeners();
 popupOpenImg.setEventListeners();
 addACardPopup.setEventListeners();
 editProfilePopup.setEventListeners();

@@ -1,9 +1,13 @@
+import { data } from "autoprefixer";
+
 export default class Card {
-  constructor(cardData, cardTemplateSelector, handleCardClick) {
+  constructor(cardData, cardTemplateSelector, handleCardClick, {handleDeleteCard}) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._template = document.querySelector(cardTemplateSelector).content.querySelector('.element');
     this._handleCardClick = handleCardClick;
+    this._handleDeleteCard = handleDeleteCard;
+    this._id = cardData._id;
   }
   _addEventListeners() {
     //handleLikeButton
@@ -13,8 +17,8 @@ export default class Card {
     );
     //handleDeleteCard
     this._deleteButton = this._element.querySelector('.element__delete');
-    this._deleteButton.addEventListener('click', (e) =>
-      this._handleDeleteCard(e)
+    this._deleteButton.addEventListener('click', () =>
+      this._handleDeleteCard(this._id)
     );
     //handlePreviewPicture
     this._element.querySelector('.element__img')
@@ -30,6 +34,7 @@ export default class Card {
   }
 
   _handleDeleteCard() {
+    console.log('_handleDeleteCard');
     this._element.remove();
   }
 
