@@ -16,7 +16,9 @@
     </header>
     <main class="main">
       <section class="profile">
-        <div class="avatar"></div>
+        <div class="avatar">
+          <button aria-label="edit" type="button" class="button profile__edit-img-button"></button>
+        </div>
         <div class="profile__info">
           <h1 class="profile__value profile__value_type_name">Jacques Cousteau</h1>
           <button aria-label="edit" type="button" class="button profile__edit"></button>
@@ -80,9 +82,9 @@
     <div class="popup popup_type_edit-profile-img">
       <div class="popup__container popup__container-edit-profile-img">
         <button aria-label="Close" type="button" class="button popup__close popup__close-edit-profile-img"></button>
-        <form name="delete-form" class="popup__form popup__form_type_delete">
+        <form name="delete-form" class="popup__form popup__form_type_edit-Img">
           <h2 class="popup__title">Change profile picture</h2>
-          <input type="url" id="input_type_link" class="popup__input popup__input_type_link" name="edit-profile-img"
+          <input type="url" id="input_type_link" class="popup__input popup__input_type_avatar" name="edit-profile-img"
             placeholder="Image link" required>
           <span id="input_type_link-error" class="popup__error"></span>
           <button aria-label="save" type="submit" class="button popup__save">Save</button>
@@ -96,7 +98,10 @@
       <div class="element__img"></div>
       <div class="element__info">
         <h2 class="element__title"></h2>
-        <button aria-label="like" type="button" class="button element__like-button"></button>
+        <div class="element__like-wrapper">
+          <button aria-label="like" type="button" class="button element__like-button"></button>
+          <span class="element__like-count"></span>
+        </div>
       </div>
     </li>
   </template>

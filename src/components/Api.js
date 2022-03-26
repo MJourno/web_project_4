@@ -45,4 +45,26 @@ export default class Api {
       method: "DELETE",
     })
   }
+
+  likeCard(cardId) {
+    return customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      headers: this._headers,
+      method: "PUT",
+    })
+  }
+
+  disLikeCard(cardId) {
+    return customFetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      headers: this._headers,
+      method: "DELETE",
+    })
+  }
+  updateProfileImg(link) {
+    return customFetch(`${this._baseUrl}/users/me/avatar`, {
+      headers: this._headers,
+      method: "PATCH",
+      body: JSON.stringify({ avatar: link })
+
+    })
+  }
 }

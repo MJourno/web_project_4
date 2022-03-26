@@ -41,3 +41,6 @@
 @import url(../blocks/popup/__caption/popup__caption.css);
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__error/_visible/popup__error_visible.css);
+@import url(../blocks/element/__likes-count/element__likes-count.css);
+@import url(../blocks/element/__like-wrapper/element__like-wrapper.css);
+@import url(../blocks/profile/__edit/profile__edit-img-button.css);
