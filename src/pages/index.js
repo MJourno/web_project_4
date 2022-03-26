@@ -79,12 +79,14 @@ function creatCard(card) {
             .then(res => {
               console.log('deleteCard', res)
               //remove from DOM
-
+              newCard.removeCard()
+              confirmModal.close()
             })
         })
 
       }
-    }
+    },
+    userId
   );
   return newCard.renderCard(card);
 }
@@ -106,7 +108,7 @@ const api = new Api({
   }
 });
 
-api.getInitialCards()
+/*api.getInitialCards()
   .then(res => {
     cardSection.renderItems(res)
     //console.log('getInitialCards', res);
@@ -116,6 +118,16 @@ api.loadUserInfo()
   .then(res => {
     userData.setUserInfo({ name: res.name, about: res.about });
     //console.log('loadUserInfo', res);
+  })*/
+  let userId
+
+
+  Promise.all([api.getInitialCards(), api.loadUserInfo()])
+  .then(([cardData, userInfo]) => {
+    console.log('cardData', cardData)
+    userId = userInfo._id
+    cardSection.renderItems(cardData);
+    userData.setUserInfo({ name: userInfo.name, about: userInfo.about });
   })
 
 function submitAddForm(cardData) {
