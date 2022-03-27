@@ -1,5 +1,3 @@
-import { data } from "autoprefixer";
-
 export default class Card {
   constructor(cardData, cardTemplateSelector, handleCardClick, { handleDeleteCard, handleLikeButton }, userId) {
     this._name = cardData.name;
@@ -32,6 +30,16 @@ export default class Card {
   _handlePreviewPicture() {
     this._handleCardClick({ link: this._link, name: this._name });
   }
+  _renderLikes = () => {
+    const likesCounter = this._cardElement.querySelector(".element__like-count");
+    likesCounter.textContent = this._likes.length;
+
+    if (this.isLiked()) {
+      this._likeButton.classList.add('.element__like-button_active')
+    } else {
+      this._likeButton.classList.remove('.element__like-button_active')
+    }
+  }
 
   isLiked() {
     return this._likes.some((person) => person._id === this._userId)
@@ -45,9 +53,9 @@ export default class Card {
 
   likeCard(newLikes) {
     this._likes = newLikes
-    this._element.querySelector('.element__like-count').textContent = this._likes.length;
+    // this._element.querySelector('.element__like-count').textContent = this._likes.length;
 
-    this._likeButton.classList.toggle('element__like-button_active');
+    // this._likeButton.classList.toggle('element__like-button_active');
   }
 
   renderCard() {
@@ -60,12 +68,12 @@ export default class Card {
     if (this._ownerId !== this._userId) {
       this._element.querySelector('.element__delete').style.display = 'none'
     }
-    //element__likes-count
-    this._element.querySelector('.element__like-count').textContent = this._likes.length;
+    // //element__likes-count
+    // this._element.querySelector('.element__like-count').textContent = this._likes.length;
 
-    if (this.isLiked()) {
-      this.likeCard(this._likes)
-    }
+    // if (this.isLiked()) {
+    //   this.likeCard(this._likes)
+    // }
 
     return this._element;
   }

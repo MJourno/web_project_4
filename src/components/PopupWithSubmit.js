@@ -1,14 +1,14 @@
-import Popup from './popup';
+import Popup from './Popup';
 export default class PopupWithSubmit extends Popup {
   setAction(action) {
-    this._submitHandler = action
+    this._handleSubmit = action
 
   }
 
   setEventListeners() {
     this._popup.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._submitHandler();
+      this._handleSubmit();
       this.close();
     });
     super.setEventListeners();

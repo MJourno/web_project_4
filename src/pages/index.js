@@ -1,21 +1,14 @@
 import '../pages/index.css';
-import Card from '../components/card.js';
+import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
-import Api from '../components/Api.js';
+import Api from '../utils/Api.js';
 import PopupWithSubmit from '../components/popupWithSubmit';
+import { pageSettings } from '../utils/constants.js';
 
-const pageSettings = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save',
-  inactiveButtonClass: 'popup__save_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible',
-};
 //wrappers
 const popupFormEdit = document.querySelector('.popup__form_type_edit');
 const popupFormAdd = document.querySelector('.popup__form_type_add-place');
@@ -24,6 +17,7 @@ const popupProfileImg = document.querySelector('.popup__form_type_edit-Img');//f
 const formButtonEdit = document.querySelector('.profile__edit');
 const profileImgEdit = document.querySelector('.profile__edit-img-button');
 const profileButtonAdd = document.querySelector('.profile__add-button');
+const submitButton = document.querySelector('.popup__save');
 //form data
 const inputName = document.querySelector('.popup__input_type_name');
 const inputJob = document.querySelector('.popup__input_type_description');
@@ -33,7 +27,7 @@ const confirmModal = new PopupWithSubmit('.popup_type_delete-card');
 const editProfileValidator = new FormValidator(pageSettings, popupFormEdit);
 const addCardFormValidator = new FormValidator(pageSettings, popupFormAdd);
 const editProfileImgValidator = new FormValidator(pageSettings, popupProfileImg);
-const userData = new UserInfo({ userNameSelector: '.profile__value_type_name', userJobSelector: '.profile__value_type_description', userAvatarSelector: '.avatar' });
+const userData = new UserInfo({ userNameSelector: '.profile__value_type_name', userJobSelector: '.profile__value_type_description', userAvatarElement: '.avatar' });
 
 const popupOpenImg = new PopupWithImage('.popup_type_img');
 const addACardPopup = new PopupWithForm(submitAddForm, '.popup_type_add-card');
@@ -52,6 +46,9 @@ function creatCard(card) {
               newCard.removeCard()
               confirmModal.close()
             })
+            .catch((err) => {
+              console.log("Error, something went wrong", err);
+            })
         })
       },
       handleLikeButton: (id) => {
@@ -62,10 +59,16 @@ function creatCard(card) {
             .then(res => {
               newCard.likeCard(res.likes)
             })
+            .catch((err) => {
+              console.log("Error, something went wrong", err);
+            })
         } else {
           api.likeCard(id)
             .then(res => {
               newCard.likeCard(res.likes)
+            })
+            .catch((err) => {
+              console.log("Error, something went wrong", err);
             })
         }
       }
@@ -100,41 +103,56 @@ Promise.all([api.getInitialCards(), api.loadUserInfo()])
     userId = userInfo._id
     cardSection.renderItems(cardData);
     userData.setUserInfo({ name: userInfo.name, about: userInfo.about });
+    userData.setUserAvatar({avatar: userInfo.avatar});
   })
   .catch((err) => {
-    console.log(err);
+    console.log("Error, something went wrong", err);
   })
 
 function submitAddForm(cardData) {
+  submitButton.textContent = 'Saving...';
+
   api.createCard(cardData)
     .then(res => {
+
       cardSection.addItem(creatCard(res));
       addACardPopup.close();
     })
     .catch((err) => {
-      console.log(err);
+      console.log("Error, something went wrong", err);
+    })
+    .finally(() => {
+      submitButton.textContent = 'Save';
     })
 }
 
 function submitEditForm({ name, about }) {
+  submitButton.textContent = 'Saving...';
   api.editProfile({ name, about })
     .then(res => {
       userData.setUserInfo({ name: res.name, about: res.about });
       editProfilePopup.close();
     })
     .catch((err) => {
-      console.log(err);
+      console.log("Error, something went wrong", err);
+    })
+    .finally(() => {
+      submitButton.textContent = 'Save';
     })
 }
 
 function submitEditImgForm(avatar) {
+  submitButton.textContent = 'Saving...';
   api.updateProfileImg(avatar)
     .then(res => {
       userData.setUserAvatar({ avatar: res.avatar });
       editProfileImgPopup.close();
     })
     .catch((err) => {
-      console.log(err);
+      console.log("Error, something went wrong", err);
+    })
+    .finally(() => {
+      submitButton.textContent = 'Save';
     })
 }
 
