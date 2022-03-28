@@ -15,7 +15,7 @@ export default class FormValidator {
       this._hideInputError(input)
     })
 
-    this._toggleButtonState(this._inputElements, this._buttonElement);
+    this._toggleButtonState();
   }
 
   _showInputError(inputElement, validationMessage) {

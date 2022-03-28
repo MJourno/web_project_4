@@ -49,7 +49,7 @@ function creatCard(card) {
             .catch((err) => {
               console.log("Error, something went wrong", err);
             })
-        })
+        });
       },
       handleLikeButton: (id) => {
         const isAlreadyLiked = newCard.isLiked()
@@ -110,24 +110,18 @@ Promise.all([api.getInitialCards(), api.loadUserInfo()])
   })
 
 function submitAddForm(cardData) {
-  submitButton.textContent = 'Saving...';
-
   api.createCard(cardData)
     .then(res => {
-
       cardSection.addItem(creatCard(res));
       addACardPopup.close();
     })
     .catch((err) => {
       console.log("Error, something went wrong", err);
     })
-    .finally(() => {
-      submitButton.textContent = 'Save';
-    })
+    .finally(() => addACardPopup.renderLoading(false));
 }
 
 function submitEditForm({ name, about }) {
-  submitButton.textContent = 'Saving...';
   api.editProfile({ name, about })
     .then(res => {
       userData.setUserInfo({ name: res.name, about: res.about });
@@ -136,13 +130,10 @@ function submitEditForm({ name, about }) {
     .catch((err) => {
       console.log("Error, something went wrong", err);
     })
-    .finally(() => {
-      submitButton.textContent = 'Save';
-    })
+    .finally(() => editProfilePopup.renderLoading(false));
 }
 
 function submitEditImgForm(avatar) {
-  submitButton.textContent = 'Saving...';
   api.updateProfileImg(avatar)
     .then(res => {
       userData.setUserAvatar({ avatar: res.avatar });
@@ -151,9 +142,7 @@ function submitEditImgForm(avatar) {
     .catch((err) => {
       console.log("Error, something went wrong", err);
     })
-    .finally(() => {
-      submitButton.textContent = 'Save';
-    })
+    .finally(() => editProfileImgPopup.renderLoading(false));
 }
 
 formButtonEdit.addEventListener('click', () => {
